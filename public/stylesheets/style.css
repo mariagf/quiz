@@ -7,7 +7,14 @@ body {
   font: 16px Georgia, serif;
 }
 
+.secion{
+
+ height: 100%;
+  width: 100%;
+}
+
 #page-wrap{
+	
 	margin: 2% auto;
 	color: white;
 }
@@ -20,7 +27,7 @@ body {
 }
 
 section > div {
-	padding: 20px;
+  
 }
 
 header, nav, section {
