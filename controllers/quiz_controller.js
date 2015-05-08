@@ -3,7 +3,7 @@ var models = require('../models/models.js');
 // GET /quizes
 exports.index = function(req,res){
 	models.Quiz.findAll().then(function(quizes){
-		res.render('quizes/index.ejs',{quizes: quizes});
+		res.render('quizes/index',{quizes: quizes});
 	})
 };
 
