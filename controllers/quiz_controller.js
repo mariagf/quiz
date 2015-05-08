@@ -1,34 +1,21 @@
 var models = require('../models/models.js');
 
-// GET /quizes
-exports.index = function(req,res){
-	models.Quiz.findAll().then(function(quizes){
-		//for (i = 0, i < quiz.length(), i++){
-		  res.render('quizes/index',{ quizes: quizes})
-		  //res.render('quizes/question',{ pregunta: '¿Italia?'})
-		//}
-	})	
+// GET /quizes/question
+exports.question = function(req,res){
+	models.Quiz.findAll().success(function(quiz){
+		res.render('quizes/question',{pregunta: '¿Cuál es la capital de Italia?'})
+	})
 };
 
-// GET /quizes/:id
-exports.show = function(req,res){
-	models.Quiz.find(req.params.quizId).then(function(quiz){
-		//for (i = 0, i < quiz.length(), i++){
-		  res.render('quizes/show',{ quiz: quiz})
-		  //res.render('quizes/question',{ pregunta: '¿Italia?'})
-		//}
-	})	
-};
-
-// GET /quizes/:id/answer
+// GET /quizes/answer
 exports.answer = function(req,res){
-  models.Quiz.find(req.params.quizId).then(function(quiz){
-	if (req.query.respuesta === quiz.respuesta){
-	  //if (req.query.respuesta === 'Roma'){
-		res.render('quizes/answer',{respuesta: 'Correcta'});
-	} else{
-		res.render('quizes/answer',{respuesta: 'Incorrecta'});
-	}
-  })
+	models.Quiz.findAll().success(function(quiz){
+		if (req.query.respuesta === quiz[0].respuesta){
+			res.render('quizes/answer',{respuesta: 'Correcta'});
+		} else{
+			res.render('quizes/answer',{respuesta: 'Incorrecta'});
+		}
+	})
+	
 };
 
