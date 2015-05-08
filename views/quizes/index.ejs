@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel='icon' href='favicon.ico' type='image/x-icon' />
+    <title>Quiz</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1>¿Estás preparado?</h1>
+    <br>
+    <table>
+    <%= var i; for (i=0; i < quizes.length; i++) { %>
+        <tr><td><a href="quizes/<&= quizes[i].id %>"><%= quizes[i].pregunta %></a></td></tr>
+    </table>
+  </body>
+</html>
