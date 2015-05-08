@@ -10,7 +10,7 @@ exports.index = function(req,res){
 // GET /quizes/:id
 exports.show = function(req,res){
 	models.Quiz.find(req.params.quizId).then(function(quiz){
-		res.render('../views/quizes/show',{quiz: quiz});
+		res.render('quizes/show',{quiz: quiz});
 	})
 };
 
@@ -18,11 +18,11 @@ exports.show = function(req,res){
 exports.answer = function(req,res){
 	models.Quiz.find(rew.params.quizId).then(function(quiz){
 		if (req.query.respuesta === quiz.respuesta){
-			res.render('../views/quizes/answer',{
+			res.render('quizes/answer',{
 							quiz: quiz,
 							respuesta: 'Correcta'});
 		} else{
-			res.render('../views/quizes/answer',{
+			res.render('quizes/answer',{
 							quiz: quiz,
 							respuesta: 'Incorrecta'});
 		}
