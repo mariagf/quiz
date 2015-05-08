@@ -35,7 +35,9 @@ footer{
 	background: #eee;
 	text-align: center;
 }
-
+table.tabla{
+	width: 250px;
+}
 
 nav span {
 	margin: 0px 10px 0px 0px;
