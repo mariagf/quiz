@@ -7,14 +7,14 @@ exports.index = function(req,res){
 	})
 };
 
-// GET /quizes/question
-exports.question = function(req,res){
+// GET /quizes/:id
+exports.show = function(req,res){
 	models.Quiz.find(req.params.quizId).then(function(quiz){
 		res.render('quizes/show',{quiz: quiz});
 	})
 };
 
-// GET /quizes/answer
+// GET /quizes/:id/answer
 exports.answer = function(req,res){
 	models.Quiz.find(rew.params.quizId).then(function(quiz){
 		if (req.query.respuesta === quiz.respuesta){
