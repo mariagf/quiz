@@ -6,7 +6,7 @@
       <link rel='icon' href='favicon.ico' type='image/x-icon'/>
   </head>
   <body>
-    <form method="get" action="/quizes/answer">
+    <form method="get" action="/quizes/<%= quiz.id %>/answer">
       <p>Pregunta: <%= quiz.pregunta%></p>
         <input type="text" name="respuesta" value="Respuesta"/>
         <input type="submit" value="Enviar"/>
