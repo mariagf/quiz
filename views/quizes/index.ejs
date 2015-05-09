@@ -11,7 +11,7 @@
     <p>El portal donde podrá crear sus propios juegos!</p>
     <br>
     <table class="tabla">
-    <% var i; for (i=0; i < quizes.length; i++) { %>
+    <% var i; for (i=0; i < quizes[].length; i++) { %>
         <tr><td><a href="quizes/<%= quizes[i].id %>">Pregunta <%= i+1 %>. <%= quizes[i].pregunta %></a></td></tr>
      <% } %>
     </table>
