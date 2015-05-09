@@ -40,6 +40,7 @@ sequelize.sync().then(function() {
             Quiz.create({ pregunta:'¿Cuál es la capital de Italia',
 				respuesta: 'Roma'
 			});
+            count ++;
              Quiz.create({ pregunta:'¿Cuál es la capital de España',
         respuesta: 'Madrid'
       });
