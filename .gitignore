@@ -1,7 +1,7 @@
 node_modules
 .DS_Store
 npm-debug.log
-quiz.sqilete
+quiz.sqlite
 .env
 
 quiz2.0/
