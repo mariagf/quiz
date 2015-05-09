@@ -7,9 +7,9 @@
   </head>
   <body>
     <form method="get" action="/quizes/answer">
-      <p>Su respuesta es: <% respuesta %></p>
+      <p>Su respuesta es: <%= quiz.respuesta %></p>
         <br>
-        <a href="/quizes/1">Reintentar Pregunta</a>
+        <a href="/quizes/<%= quiz.id %>">Reintentar Pregunta</a>
          <br>
         <a href="/quizes">Reintentar Quiz</a>
     </form>  
