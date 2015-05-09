@@ -46,9 +46,6 @@ sequelize.sync().then(function() {
       });
               Quiz.create({ pregunta:'¿Cuál es la capital de Inglaterra?',
         respuesta: 'Londrés'
-      }); 
-              Quiz.create({ pregunta:'¿Cuál es la capital de Francia?',
-        respuesta: 'Paris'
       })
             .then( function(){console.log('Base de datos inicializa')});
         };
