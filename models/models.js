@@ -40,10 +40,15 @@ sequelize.sync().then(function() {
             Quiz.create({ pregunta:'¿Cuál es la capital de España?',
                           respuesta: 'Madrid'
                          });
-
-            Quiz.create({ pregunta:'¿Cuál es la capital de España?',
-                          respuesta: 'Madrid'
-			                   })
+            Quiz.create({ pregunta:'¿Cuál es la capital de Italia?',
+				                  respuesta: 'Roma'
+			                   });
+            Quiz.create({ pregunta:'¿Cuál es la capital de Inglaterra?',
+                          respuesta: 'Londres'
+                        });
+            Quiz.create({ pregunta:'¿Cuál es la capital de Francia?',
+                          respuesta: 'Paris'
+                        })
             .then( function(){console.log('Base de datos inicializa')});
         };
     });
