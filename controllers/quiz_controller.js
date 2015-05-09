@@ -2,9 +2,6 @@ var models = require('../models/models.js');
 
 // GET /quizes
 exports.index = function(req,res){
-	models.Quiz.findAll({where: ["pregunta like ?", search]}]{
-		res.render('quizes/index',{quizes: quizes});
-	}
 	models.Quiz.findAll().then(function(quizes){
 		res.render('quizes/index',{quizes: quizes});
 	})

@@ -10,12 +10,6 @@
     <br>
     <p>El portal donde podrá crear sus propios juegos!</p>
     <br>
-    <form method="get" action="/quizes">
-      <p>Buscador:</p>
-        <input type="text" name="buscador" value="palabra a buscar"/>
-        <input type="submit" value="Buscar"/>
-    </form> 
-    <br>
     <table class="tabla">
     <% var i; for (i=0; i < quizes.length; i++) { %>
         <tr><td><a href="quizes/<%= quizes[i].id %>">Pregunta <%= i+1 %>. <%= quizes[i].pregunta %></a></td></tr>
