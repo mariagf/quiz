@@ -61,5 +61,12 @@ app.use(function(err, req, res, next) {
     });
 });
 
+app.get('/listas', function(req, res){
+  
+  var buscar1 = req.query.buscar1;
+
+  res.render('/quizes/listas', { variable: buscar1 });
+
+});
 
 module.exports = app;
