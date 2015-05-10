@@ -17,7 +17,7 @@ exports.show = function(req,res){
 exports.lista = function(req,res){
 	var x = req.query.busqueda;
 	var y = x.replace("\s", "%");
-	alert('%'+y+'%');
+	console.log('%'+y+'%');
 	models.Quiz.findAll({where: ["pregunta like ?", '%' + x + '%']}).then(function(quizes){
 		
 		res.render('quizes/lista',{quizes: quizes});
