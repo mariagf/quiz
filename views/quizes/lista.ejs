@@ -9,13 +9,12 @@
   <body>
    <center>
     <table class="tabla">
-    
         <% var i; var quizesAux; for (i=0; i < quizes.length; i++) {
             quizesAux[i] = quizes[i].pregunta;
           }
         %>
-       <% for (i=0; i < quizesAux.length; i++) { %>
-        <tr><td align=center><a href="quizes/<%= quizesAux[i].id %>">Pregunta <%= i+1 %>. <%= quizesAux[i].pregunta %></a></td></tr>
+       <% var j; for (j=0; j < quizesAux.length; j++) { %>
+        <tr><td align=center><a href="quizes/<%= quizesAux[j].id %>">Pregunta <%= j+1 %>. <%= quizesAux[j].pregunta %></a></td></tr>
      <% } %>
     </table>
   </center>
