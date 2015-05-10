@@ -6,7 +6,26 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
 
+  <script type="text/javascript">
+      var suma = 0; var sumaKit = 0; var sumaExtra = 0; var sumaJardin = 0;
+                    var nKit = 0; var nExtra = 0; var nJardin = 0;
+      function buscar(){
+       //alert(selectobj.value);
+      }
+  </script>
+
   <body>
-   <p> Hola!</p>
+    <form name="buscador" id="finder" action="/lista">
+        Buscador: <input type="text" name="busqueda" value="Texto a buscar...">
+        <button onclick="buscar()" type="submit">Buscar</button>
+    </form>
+    <br>
+    <center>
+    <table class="tabla" width="900px">
+    <% var i; for (i=0; i < quizes.length; i++) { %>
+        <tr><td align=center><a href="quizes/<%= quizes[i].id %>">Pregunta <%= i+1 %>. <%= quizes[i].pregunta %></a></td></tr>
+     <% } %>
+    </table>
+  </center>
   </body>
 </html>
