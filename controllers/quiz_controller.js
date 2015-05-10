@@ -14,6 +14,12 @@ exports.show = function(req,res){
 	})
 };
 
+exports.lista = function(req,res){
+	models.Quiz.find(req.params.quizId).then(function(quiz){
+		res.render('lista',{quizes: quizes});
+	})
+};
+
 // GET /quizes/:id/answer
 exports.answer = function(req,res){
 	models.Quiz.find(req.params.quizId).then(function(quiz){
