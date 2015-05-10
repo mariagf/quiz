@@ -49,10 +49,7 @@ sequelize.sync().then(function() {
             Quiz.create({ pregunta:'¿Cuál es la capital de Francia?',
                           respuesta: 'Paris'
                         });
-            Quiz.create({ pregunta:'¿Quién decubrió América?',
-                          respuesta: 'Colón'
-                        });
-            Quiz.create({ pregunta:'¿Quién decubrió América?',
+            Quiz.create({ pregunta:'¿Quién decsubrió América?',
                           respuesta: 'Colón'
                         });
             Quiz.create({ pregunta:'¿Quién inventó la bombilla?',
@@ -76,7 +73,7 @@ sequelize.sync().then(function() {
               Quiz.create({ pregunta:'¿En qué lado está el acelerador en un coche?',
                           respuesta: 'Derecha'
                         });
-              Quiz.create({ pregunta:'¿Cuántos kilates tiene una pieza de oro puro?',
+              Quiz.create({ pregunta:'¿Cuántos quilates tiene una pieza de oro puro?',
                           respuesta: '24'
                         });
               Quiz.create({ pregunta:'¿Cuántos años de mala suerte siguen a la rotura de un espejo?',
