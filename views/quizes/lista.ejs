@@ -9,9 +9,8 @@
   <body>
    <center>
     <table class="tabla">
-       
-       <% var i; for (i=0; i < quizesAux.length; i++) { %>
-        <tr><td align=center><a href="quizes/<%= quizesAux[i].id %>">Pregunta <%= i+1 %>. <%= quizesAux[i].pregunta %></a></td></tr>
+       <% var i; for (i=0; i < quizes.length; i++) { %>
+        <tr><td align=center><a href="quizes/<%= quizes[i].id %>">Pregunta <%= i+1 %>. <%= quizes[i].pregunta %></a></td></tr>
      <% } %>
     </table>
   </center>
