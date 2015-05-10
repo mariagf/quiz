@@ -15,9 +15,7 @@
         var i;
         for (i=0; i < quizes.length; i++) {
           quizesAux[i] = quizes[i].pregunta;
-        }
-       
-        quizesAux2 = quizesAux.sort(); 
+        } 
 
         for (i=0; i < quizesAux.length; i++) { %>
         <tr><td align=center><a href="quizes/<%= quizesAux[i].id %>">Pregunta <%= i+1 %>. <%= quizesAux[i].pregunta %></a></td></tr>
