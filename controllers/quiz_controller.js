@@ -15,8 +15,8 @@ exports.show = function(req,res){
 };
 
 exports.lista = function(req,res){
-	models.Quiz.find(req.params.quizId).then(function(quiz){
-		res.render('lista',{quizes: quizes});
+	models.Quiz.findAll().then(function(quizes){
+		res.render('quizes/lista',{quizes: quizes});
 	})
 };
 
