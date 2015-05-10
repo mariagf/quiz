@@ -16,4 +16,8 @@ router.get('/author', function(req, res) {
   res.render('author', { title: 'Créditos' });
 });
 
+router.get('/lista', function(req, res) {
+  res.render('lista', { title: 'Preguntas' });
+});
+
 module.exports = router;
