@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var app = express();
 
 var quizController = require('../controllers/quiz_controller');
 
@@ -14,6 +15,14 @@ router.get('/', function(req, res) {
 
 router.get('/author', function(req, res) {
   res.render('author', { title: 'Créditos' });
+});
+
+app.get('/listas', function(req, res){
+  
+  var buscar1 = req.query.buscar1;
+
+  res.render('listas', { variable: buscar1 });
+
 });
 
 module.exports = router;
