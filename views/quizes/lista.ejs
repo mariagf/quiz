@@ -11,13 +11,15 @@
     <table class="tabla">
       <%
         var quizesAux;
+        var quizesAux2;
         var i;
         for (i=0; i < quizes.length; i++) {
           quizesAux[i] = quizes[i].pregunta;
         }
-      %>
-      <% quizesAux = quizesAux.sort(); %>
-    <% for (i=0; i < quizesAux.length; i++) { %>
+       
+        quizesAux2 = quizesAux.sort(); 
+
+        for (i=0; i < quizesAux.length; i++) { %>
         <tr><td align=center><a href="quizes/<%= quizesAux[i].id %>">Pregunta <%= i+1 %>. <%= quizesAux[i].pregunta %></a></td></tr>
      <% } %>
     </table>
