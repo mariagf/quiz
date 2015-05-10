@@ -48,6 +48,42 @@ sequelize.sync().then(function() {
                         });
             Quiz.create({ pregunta:'¿Cuál es la capital de Francia?',
                           respuesta: 'Paris'
+                        });
+            Quiz.create({ pregunta:'¿Quién decubrió América?',
+                          respuesta: 'Colón'
+                        });
+            Quiz.create({ pregunta:'¿Quién decubrió América?',
+                          respuesta: 'Colón'
+                        });
+            Quiz.create({ pregunta:'¿Quién inventó la bombilla?',
+                          respuesta: 'Edison'
+                        });
+             Quiz.create({ pregunta:'¿Quién es el presidente de los EEUU?',
+                          respuesta: 'Obama'
+                        });
+              Quiz.create({ pregunta:'¿Qué moneda se utiliza en Londres?',
+                          respuesta: 'Libra'
+                        });
+              Quiz.create({ pregunta:'¿Qué moneda se utiliza en Suiza?',
+                          respuesta: 'Franco'
+                        });
+              Quiz.create({ pregunta:'¿A qué temperatura en grados ºC hierve el agua?',
+                          respuesta: '100'
+                        });
+              Quiz.create({ pregunta:'¿Qué nombre reciben las crías de Jabalí?',
+                          respuesta: 'Jabatos'
+                        });
+              Quiz.create({ pregunta:'¿En qué lado está el acelerador en un coche?',
+                          respuesta: 'Derecha'
+                        });
+              Quiz.create({ pregunta:'¿Cuántos kilates tiene una pieza de oro puro?',
+                          respuesta: '24'
+                        });
+              Quiz.create({ pregunta:'¿Cuántos años de mala suerte siguen a la rotura de un espejo?',
+                          respuesta: '7'
+                        });
+              Quiz.create({ pregunta:'¿Cuántos años de matrimonio se celebran en las Bodas de Oro?',
+                          respuesta: '50'
                         })
             .then( function(){console.log('Base de datos inicializa')});
         };
