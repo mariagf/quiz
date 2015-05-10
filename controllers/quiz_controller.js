@@ -15,7 +15,9 @@ exports.show = function(req,res){
 };
 
 exports.lista = function(req,res){
-	models.Quiz.findAll().then(function(quizes){
+	var x = req.query.busqueda;
+	models.Quiz.findAll({where: ["pregunta like ?", '%' + x + '%']}).then(function(quizes){
+		quizes.short();
 		res.render('quizes/lista',{quizes: quizes});
 	})
 };
