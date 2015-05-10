@@ -21,7 +21,7 @@ app.get('/listas', function(req, res){
   
   var buscar1 = req.query.buscar1;
 
-  res.render('listas', { variable: buscar1 });
+  res.render('/quizes/listas', { variable: buscar1 });
 
 });
 
