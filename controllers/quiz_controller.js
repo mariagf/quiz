@@ -16,14 +16,9 @@ exports.show = function(req,res){
 
 exports.lista = function(req,res){
 	var x = req.query.busqueda;
-	models.Quiz.findAll({where: ["pregunta like ?", '%' + x + '%']}).then(function(quizes){
-		//quizes.short();
-		var i; 
-		var quizesAux;
-		for (i=0; i < quizes.length; i++){
-			quizesAux[i] = quizes[i].pregunta;
-		}
-		res.render('quizes/lista',{quizes: quizesAux.sort()});
+	models.Quiz.sort().findAll({where: ["pregunta like ?", '%' + x + '%']}).then(function(quizes){
+		
+		res.render('quizes/lista',{quizes: quizes});
 	})
 };
 
