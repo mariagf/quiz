@@ -30,3 +30,10 @@ exports.answer = function(req,res){
 	
 };
 
+exports.lista = function(req,res){
+	models.Quiz.findAll({where: ["pregunta like ?", search]}]
+.then(function(quiz){
+		res.render('quizes/lista',{quizes: quizes});
+	})
+};
+
