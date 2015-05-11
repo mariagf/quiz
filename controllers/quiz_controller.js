@@ -26,6 +26,14 @@ exports.show = function(req,res){
 	
 };
 
+// GET /quizes/new
+exports.new = function(req,res){
+	var quiz = models.Quiz.build( // crea objeto quiz
+		{pregunta: "Pregunta", respuesta: "Respuesta"}
+		);
+		res.render('quizes/new',{quiz: quiz});
+};
+
 exports.lista = function(req,res){
 	var x = req.query.busqueda;
 	var y = x.replace(/\s+/g, '%');
@@ -33,6 +41,16 @@ exports.lista = function(req,res){
 
 		res.render('quizes/lista',{quizes: quizes});
 	})
+};
+
+// Definción de rutas de /quizes
+exports.create = function(req,res){
+	var quiz = models.Quiz.build( req.body.quiz);
+	// guarda en DB los campos pregunta y respuesta de quiz
+	quiz.save({fields: ["pregunta", "respuesta"]}).then(function(){
+
+		res.redirect('/quizes');
+	}) // Redirección HTTP (URL relativo) lista de preguntas
 };
 
 // GET /quizes/:id/answer
