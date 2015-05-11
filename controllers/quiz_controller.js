@@ -38,9 +38,9 @@ exports.lista = function(req,res){
 // GET /quizes/:id/answer
 exports.answer = function(req,res){
 	var resultado = 'Incorrecta';
-		if (req.query.respuesta === req.quiz.respuesta){
-				resultado = 'Correcta'});
-		} res.render('quizes/answer',{
+	if (req.query.respuesta === req.quiz.respuesta){
+		resultado = 'Correcta';
+	} res.render('quizes/answer',{
 							quiz: req.quiz,
 							respuesta: resultado});	
 };
