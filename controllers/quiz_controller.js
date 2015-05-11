@@ -37,7 +37,7 @@ exports.lista = function(req,res){
 	var y = x.replace(/\s+/g, '%');
 	models.Quiz.findAll({where: ["pregunta like ?", '%' + y + '%'], order: [["pregunta", 'ASC']]}).then(function(quizes){
 
-		res.render('quizes/lista',{quizes: quizes, , errors: []});
+		res.render('quizes/lista',{quizes: quizes});
 	})
 };
 
@@ -49,7 +49,7 @@ exports.create = function(req,res){
 
 	if(err){
 		//res.render('quizes/new', {quiz:quiz, errors: err.errors});
-		res.render('quizes/new', {quiz:quiz, , errors: []});
+		res.render('quizes/new', {quiz:quiz});
 
 	} else{ // guarda en DB los campos pregunta y respuesta de quiz
 	quiz.save({fields: ["pregunta", "respuesta"]}).then(function(){
