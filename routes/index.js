@@ -14,8 +14,9 @@ router.param('quizId', quizController.load); // autoload :quizId
 // Definición de rutas de /quizes
   router.get('/quizes', quizController.index);
   router.get('/quizes/:quizId(\\d+)', quizController.show);
-  router.get('/quizes/:quizId(\\d+)/answer', quizController.answer);
-  router.get('/lista', quizController.lista);
+  router.get('/quizes/new', quizController.new);
+  router.get('/quizes/:quizId(\\d+)/answer', quizController.answer);  router.get('/lista', quizController.lista);
+  router.post('/quizes/create', quizController.create);
 
 router.get('/author', function(req, res) {
   res.render('author', { title: 'Créditos' });
