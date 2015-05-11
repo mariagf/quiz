@@ -16,14 +16,12 @@ exports.load = function(req, res, next, quizId){
 exports.index = function(req,res){
 	models.Quiz.findAll().then(function(quizes){
 		res.render('quizes/index', {quizes: quizes, errors: []});
-	}).catch(function(error) { next(error);})
+	}).catch(function(error) { next(error)});
 };
 
 // GET /quizes/:id
 exports.show = function(req,res){
-	
 		res.render('quizes/show',{quiz: req.quiz, errors: []});
-	
 };
 
 // GET /quizes/new
@@ -50,7 +48,8 @@ exports.create = function(req,res){
 	quiz.validate().then(function(err){
 
 	if(err){
-		res.render('quizes/new', {quiz:quiz, errors: err.errors});
+		//res.render('quizes/new', {quiz:quiz, errors: err.errors});
+		res.render('quizes/new', {quiz:quiz});
 
 	} else{ // guarda en DB los campos pregunta y respuesta de quiz
 	quiz.save({fields: ["pregunta", "respuesta"]}).then(function(){
