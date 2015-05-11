@@ -37,15 +37,11 @@ exports.lista = function(req,res){
 
 // GET /quizes/:id/answer
 exports.answer = function(req,res){
-	var resultado = 'Incorrecto';
+	var resultado = 'Incorrecta';
 		if (req.query.respuesta === req.quiz.respuesta){
 				resultado = 'Correcta'});
-		} else{
-			res.render('quizes/answer',{
+		} res.render('quizes/answer',{
 							quiz: req.quiz,
-							respuesta: resultado});
-		}
-	})
-	
+							respuesta: resultado});	
 };
 
