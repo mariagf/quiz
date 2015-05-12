@@ -1,10 +1,10 @@
-// Definición del modelo de Comment con validación
+//Definición del modelo d eComment con validación
 
 module.exports = function(sequelize, DataTypes){
-  return sequelize.define('Comment', 
-    { texto: 
-        { type: DataTypes.STRING,
-          validate: { notEmpty: {msg: "-> Falta Comentario"}}
-        }
-    });
+  return sequelize.define('Comment', {
+    texto: {
+        type: DataTypes.STRING,
+        validate: { notEmpty: {msg: "-> Falta Comentario"}}
+    }
+  });
 }
