@@ -11,5 +11,9 @@
         <input type="text" name="respuesta" value="Respuesta"/>
         <input type="submit" value="Enviar"/>
     </form>  
+    <p><strong>Comentarios:</strong></p>
+    <% for(index in quiz.Comments){ %>
+      <p>- <%= quiz.Comments[index].texto%></p>
+      <% } %>
   </body>
 </html>
