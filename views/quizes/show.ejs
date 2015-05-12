@@ -1,12 +1,4 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8"><title>Quiz</title>
-    <link rel='stylesheet' href='/stylesheets/style.css'/>
-      <link rel='icon' href='favicon.ico' type='image/x-icon'/>
-  </head>
-  <body>
-    <form method="get" action="/quizes/<%= quiz.id %>/answer">
+ <form method="get" action="/quizes/<%= quiz.id %>/answer">
       <p>Pregunta: <%= quiz.pregunta%></p>
         <input type="text" name="respuesta" value="Respuesta"/>
         <input type="submit" value="Enviar"/>
@@ -16,5 +8,3 @@
     <% for(index in quiz.Comments){ %>
       <p>- <%= quiz.Comments[index].texto%></p>
       <% } %>
-  </body>
-</html>
