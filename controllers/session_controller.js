@@ -1,4 +1,4 @@
-// Get /login --Formulario de login
+// Get /login -- Formulario de login
 exports.new = function(req, res){
 		var errors = req.session.errors || {};
 		req.session.errors = {};
@@ -15,7 +15,7 @@ exports.create = function(req,res){
 	var userController = require('./user_controller');
 	userController.autenticar(login, password, function(error, user){
 	
-	if(errot){ // si hay error retornamos mensajes de error de sesión
+	if(error){ // si hay error retornamos mensajes de error de sesión
 		res.session.errors = [{"message": 'Se ha producido un error: ' + error}];
 		res.redirect("/login");
 		return;
