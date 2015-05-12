@@ -40,11 +40,6 @@ footer{
 border-top: 1px solid #ccc; 
 }
 
-#ErrorMsgs{
-	color: #f61;
-	font-size: smaler
-}
-
 table.tabla{
 	width: 700px;
 	height: 50px;
@@ -52,4 +47,9 @@ table.tabla{
 
 nav span {
 	margin: 0px 10px 0px 0px;
+}
+
+#ErrorMsgs{
+	color: #f61;
+	font-size: smaler;
 }
