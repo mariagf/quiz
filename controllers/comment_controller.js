@@ -14,7 +14,7 @@ exports.create = function(req,res){
 	comment.validate().then(function(err){
 
 	if(err){
-		res.render('comments/new', {comment: comment, quizid: req.params.quizId, errors: err.errors});
+		res.render('comments/new', {comment: comment, errors: err.errors});
 
 	} else{ // guarda en DB los campos pregunta y respuesta de quiz
 	comment.save().then(function(){
