@@ -25,5 +25,3 @@ exports.create = function(req,res){
    }
   ).catch(function(error){next(error)});
 };
-
-/
