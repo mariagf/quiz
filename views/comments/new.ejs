@@ -5,11 +5,13 @@
     <title>Quiz</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
+
   <body>
    <center>
-    Añadir pregunta: <p>
-    <form method="post" action="/quizes/create" >
-      <% include _form.ejs %>
+    Añadir comentario: <p>
+    <form method="post" action="/quizes/<%=quizid%>/comments/" >
+      <input type="text" id="comment" name="comment[texto]" value""/><p>
+      <button type="submit">Enviar</button>
     </form>
   </center>
   </body>
