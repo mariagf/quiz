@@ -19,7 +19,7 @@ exports.create = function(req,res){
 		res.session.errors = [{"message": 'Se ha producido un error: ' + error}];
 		res.redirect("/login");
 		return;
-	} // Crear req.user y guardar campos id y username
+	} // Crear req.session.user y guardar campos id y username
 	  // La sesión se define por la existencia de: req.session.user
 	  	req.session.user = {id: user.id, username: user.username};
 
