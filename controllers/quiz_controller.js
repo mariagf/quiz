@@ -23,6 +23,11 @@ exports.index = function(req,res){
 exports.show = function(req,res){
 		res.render('quizes/show',{quiz: req.quiz, errors: []});
 };
+// GET /quizes/:id/edit
+exports.edit = function(req,res){
+		var quiz = req.quiz; //autoload de instancia de quiz
+		res.render('quizes/edit',{quiz: quiz, errors: []});
+};
 
 // GET /quizes/new
 exports.new = function(req,res){
