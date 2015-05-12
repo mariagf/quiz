@@ -12,7 +12,7 @@
   <body>
   <div id="page-wrap">
       <header class="main" id="h1">
-        <% if(!session.user) %>
+        <% if(!session.user) {%>
         <span class="right"><a href="/login">Login</a></span>
         <%}else{%>
          <span class="right"><%= session.user.username %><a href="/logout">Logout</a></span>
@@ -30,7 +30,7 @@
     <section id="s1">
       <% if (errors.length) { %>
       <span id='ErrorMsgs' >
-        Corregir errores: <br>
+        Corregir errores: <br />
         <% for (var i in errors) { %>
          <span> <%= errors[i].message %> </span><br/>
          <% } %>
