@@ -1,5 +1,5 @@
 var models = require('../models/models.js');
-
+/*
 //Autoload - factoriza el código si ruta incluye :quizId
 exports.load = function(req,res, next, quizId){
 	models.Quiz.find(quizId).then(function(quiz){
@@ -12,14 +12,14 @@ exports.load = function(req,res, next, quizId){
 	})//. catch(function(error){next(error);})
 };
 
-
+*/
 // GET /quizes
 exports.index = function(req,res){
 	models.Quiz.findAll().then(function(quizes){
 		res.render('quizes/index',{quizes: quizes});
-	}).catch(function (error){next(error);});
+	})//.catch(function (error){next(error);});
 };
-
+/*
 // GET /quizes/new
 exports.new = function(req,res){
 	var quiz = models.Quiz.build( // crea objeto quiz
@@ -66,6 +66,30 @@ exports.answer = function(req,res){
 							quiz: req.quiz,
 							respuesta: resultado});
 	//})
+	
+};
+*/
+
+// Get /quizes/:id
+exports.show = function(req,res){
+	models.Quiz.find(req.params.quizId).then(function(quiz){
+	
+	res.render('quizes/show',{quiz: quiz});
+	})
+	
+};
+
+// Get /quizes/answer
+exports.answer = function(req,res){
+	models.Quiz.find(req.params.quizId).then(function(quiz){
+	
+		var resultado = 'Incorrecta';
+		if (req.query.respuesta === quiz.respuesta){
+			resultado = 'Correcta';
+		}
+			res.render('quizes/answer',{quiz: quiz, respuesta: resultado});
+
+	})
 	
 };
 

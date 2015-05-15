@@ -16,6 +16,7 @@ var storage = process.env.DATABASE_STORAGE;
 var Sequelize = require('sequelize');
 
 //USAR BBDD SQlite o  Postgres
+
 var sequelize = new Sequelize(DB_name,user,pwd,
 	{ dialect: protocol,
       protocol: protocol,
