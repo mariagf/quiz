@@ -20,7 +20,7 @@
           <td align=center><a href="quizes/<%= quizes[i].id %>/edit"><button>editar</button></a></td>
           <td>
             <form method="post" action="quizes/<%= quizes[i].id%>?_method=delete">
-              <% alert(quizes[i].pregunta);%>
+              
               <button type="submit" onClick="return confirm('Borrar: <%= quizes[i].pregunta %>');"> borrar </button>
           </td>
         </tr>
