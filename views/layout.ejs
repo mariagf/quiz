@@ -12,11 +12,11 @@
   <body>
   <div id="page-wrap">
       <header class="main" id="h1">
-        <% if(!session.user) {%>
+        <!--<% if(!session.user) {%> 
         <span class="right"><a href="/login">Login</a></span>
         <%}else{%>
          <span class="right"><%= session.user.username %><a href="/logout">Logout</a></span>
-        <%}%>
+        <%}%> -->
         <h2>Quiz: el juego de las preguntas!</h2>
       </header>
       <nav class="main" id="n1" role="navigation">
@@ -27,7 +27,7 @@
         <span><a href="/author">Créditos</a></span>
       </nav>
       
-    <section id="s1">
+    <section class="main" id="s1">
       <% if (errors.length) { %>
       <span id='ErrorMsgs' >
         Corregir errores: <br />
