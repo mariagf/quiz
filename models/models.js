@@ -21,8 +21,8 @@ var sequelize = new Sequelize(DB_name,user,pwd,
       protocol: protocol,
       port: port,
       host: host,
-      storage: storage,
-      omitNull: true
+      storage: storage, // Solo SQLite (.env)
+      omitNull: true // solo Postgres
     }
 );
 

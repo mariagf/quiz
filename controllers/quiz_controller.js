@@ -41,9 +41,9 @@ exports.create = function(req,res){
 
 // GET /quizes/:id
 exports.show = function(req,res){
-	//models.Quiz.find(req.params.quizId).then(function(quiz){
+	models.Quiz.find(req.params.quizId).then(function(quiz){
 		res.render('quizes/show',{quiz: req.quiz});
-	//})
+	})
 };
 
 exports.lista = function(req,res){
@@ -57,15 +57,21 @@ exports.lista = function(req,res){
 
 // GET /quizes/:id/answer
 exports.answer = function(req,res){
-	//models.Quiz.find(req.params.quizId).then(function(quiz){
-		var resultado = 'Incorrecta';
-		if (req.query.respuesta === req.quiz.respuesta){
-			resultado = 'Correcta';
+	models.Quiz.find(req.params.quizId).then(function(quiz){
+		//var resultado = 'Incorrecta';
+		//if (req.query.respuesta === req.quiz.respuesta){
+		//	resultado = 'Correcta';
+		//}
+		//	res.render('quizes/answer',{
+		//					quiz: req.quiz,
+		//					respuesta: resultado});
+		if (req.query.respuesta === quiz.respuesta){
+			res.render('quizes/answer',{ quiz: quiz, respuesta: 'Correcta'});
+		} else {
+			res.render('quizes/answer',{ quiz: quiz, respuesta: 'Incorrecta'});
 		}
-			res.render('quizes/answer',{
-							quiz: req.quiz,
-							respuesta: resultado});
-	//})
+
+	})
 	
 };
 
