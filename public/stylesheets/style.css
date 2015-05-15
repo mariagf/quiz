@@ -14,10 +14,6 @@ body {
 	color: black;
 }
 
-.right{
-	float:right;
-}
-
 #page-wrap > .main {
 	border-left: 1px solid #ccc; 
 	border-right: 1px solid #ccc; 
@@ -51,9 +47,4 @@ table.tabla{
 
 nav span {
 	margin: 0px 10px 0px 0px;
-}
-
-#ErrorMsgs{
-	color: #f61;
-	font-size: smaler;
 }
