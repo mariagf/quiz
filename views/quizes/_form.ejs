@@ -1,16 +1,6 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8"><title>Crear pregunta</title>
-    <link rel='stylesheet' href='/stylesheets/style.css'/>
-      <link rel='icon' href='favicon.ico' type='image/x-icon'/>
-  </head>
-  <body>
-      <p><label for="preg" clas="rem">Pregunta: </label>
-      <input type="text" id="preg" name="quiz[pregunta]" value="<%= quiz.pregunta %>"/> </p>
-      <p><label for="resp" clas="rem">Respuesta: </label>
-      <input type="text" id="resp" name="quiz[respuesta]" value="<%= quiz.respuesta %>"/></p>
-      <a href="/quizes"><button type="button">Cancelar</button></a>
-      <input type="submit" value="Guardar">
-  </body>
-</html>
+<label for="preg" class="rem">Pregunta: </label>
+<input type="text" id="preg" name="quiz[pregunta]" value="<%= quiz.pregunta %>"/> <p>
+<label for="resp" class="rem">Respuesta: </label>
+<input type="text" id="resp" name="quiz[respuesta]" value="<%= quiz.respuesta %>"/> <p>
+<a href="/quizes"><button type="button">Cancelar</button></a>
+<input type="submit" value="Guardar">
