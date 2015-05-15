@@ -3,7 +3,7 @@ exports.new = function(req, res){
 		var errors = req.session.errors || {};
 		req.session.errors = {};
 
-		res.render('/sessions/new',{errors: errors});
+		res.render('sessions/new',{errors: errors});
 };
 
 // MW de autorización de accesos HTTP restringidos
@@ -21,7 +21,7 @@ exports.create = function(req,res){
 	var login = req.body.login;
 	var password = req.body.password;
 
-	var userController = require('./user_controller');
+	var userController = require('../controllers/user_controller');
 	userController.autenticar(login, password, function(error, user){
 	
 	if(error){ // si hay error retornamos mensajes de error de sesión
