@@ -1,11 +1,3 @@
-// Get /login -- Formulario de login
-exports.new = function(req, res){
-		var errors = req.session.errors || {};
-		req.session.errors = {};
-
-		res.render('sessions/new',{errors: errors});
-};
-
 // MW de autorización de accesos HTTP restringidos
 exports.loginRequired = function(req, res, next){
 		if (req.session.user){
@@ -13,6 +5,14 @@ exports.loginRequired = function(req, res, next){
 		} else{
 			res.redirect('/login');
 		}
+};
+
+// Get /login -- Formulario de login
+exports.new = function(req, res){
+		var errors = req.session.errors || {};
+		req.session.errors = {};
+
+		res.render('sessions/new',{errors: errors});
 };
 
 // POST /login -- Crear la sesión
@@ -26,7 +26,7 @@ exports.create = function(req,res){
 	userController.autenticar(login, password, function(error, user){
 	
 	if(error){ // si hay error retornamos mensajes de error de sesión
-		res.session.errors = [{"message": 'Se ha producido un error: ' + error}];
+		req.session.errors = [{"message": 'Se ha producido un error: ' + error}];
 		res.redirect("/login");
 		return;
 	} // Crear req.session.user y guardar campos id y username
