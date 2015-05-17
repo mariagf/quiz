@@ -1,3 +1,5 @@
+var models = require('../models/models.js');
+
 // Get /login -- Formulario de login
 exports.new = function(req, res){
 		var errors = req.session.errors || {};
