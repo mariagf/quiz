@@ -10,6 +10,10 @@ router.get('/', function(req, res) {
   res.render('index', { title: 'Quiz', errors: [] });
 });
 
+router.get('/statistics', function(req, res) {
+  res.render('quizes/statistics', { title: 'Estadísticas' });
+});
+
 // Autoload de comandos con :quizId
 router.param('quizId', quizController.load); //autoload :quizId
 router.param('commentId', commentController.load); //autoload :commentId
@@ -38,10 +42,6 @@ router.param('commentId', commentController.load); //autoload :commentId
 
 router.get('/author', function(req, res) {
   res.render('author', { title: 'Créditos' });
-});
-
-router.get('/statistics', function(req, res) {
-  res.render('/quizes/statistics', { title: 'Estadísticas' });
 });
 
 module.exports = router;
