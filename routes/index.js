@@ -10,6 +10,11 @@ router.get('/', function(req, res) {
   res.render('index', { title: 'Quiz', errors: [] });
 });
 
+router.get('/flash', function(req, res) {
+  req.flash('¡Su sesión ha expirado!\nIntroduzca de nuevo su usuario y contraseña por favor.');
+  res.redirect('/login');
+});
+
 router.get('/statistics', quizController.statistics);
 
 // Autoload de comandos con :quizId
