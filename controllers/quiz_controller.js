@@ -49,7 +49,9 @@ exports.new = function(req,res){
 };
 
 exports.statistics = function(req,res){
-	res.render('quizes/statistics',{quizes: quizes, errors: []});
+	models.Quiz.findAll().then(function(quizes){
+		res.render('quizes/statistics',{quizes: quizes, errors: []});
+	}).catch(function(error) { next(error)});
 };
 
 exports.lista = function(req,res){
