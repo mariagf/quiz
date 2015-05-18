@@ -13,7 +13,7 @@
      <%var conComentarios = 0; var nMedio = 0%>
       <% var i; for (i=0; i < quizes.length; i++) { %>
           <%if (comment[i]) {%>
-          <% if (quizes[i].id === comment[i].id){ %>
+          <% if (quizes[i].id === comment[i].quizes.id){ %>
             <%conComentarios ++;%>
           <% } %>
           <% } %>
