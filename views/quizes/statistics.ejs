@@ -11,12 +11,10 @@
     <h2><u>Estadísticas de la Base de Datos</u></h2>
     <br>
      <%var conComentarios = 0; var nMedio = 0%>
-      <% var i; for (i=0; i < quizes.length; i++) { %>
-          <%if (comment[i]) {%>
-          <% if (quizes[i].id === comment[i].quizes.id){ %>
-            <%conComentarios ++;%>
-          <% } %>
-          <% } %>
+      <% for (index in quiz.Comments){ %>
+        <% if(quiz.Comments[index].QuizId) { %>
+        <% alert('Hola');%>
+        <% } %>
       <% } %>
     <table class="tabla2">
      
