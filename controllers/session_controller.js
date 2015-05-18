@@ -15,7 +15,6 @@ exports.timeout = function(req, res, next){
 		//if((time - req.session.user.startTime) > 120000){
 		if((time - req.session.user.startTime) > 5000){
 			delete req.session.user;
-			
 			res.redirect("/login");  
 		} else{
 			req.session.user.startTime = time;
