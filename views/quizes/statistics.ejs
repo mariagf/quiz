@@ -12,8 +12,8 @@
     <br>
     <table class="tabla2">
       <%var sinComentarios = 0; var conComentarios = 0; var nMedio = 0%>
-      <% for (index in quiz.Comments){ %>
-        <% if(quiz.Comments[index]) { %>
+      <% var i; for (i=0; i < quizes.length; i++) { %>
+      <% for (quizes[i].Comments){ %>
             conComentarios ++;
         <% } else {%>
             sinComentarios ++;
