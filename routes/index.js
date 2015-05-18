@@ -40,4 +40,8 @@ router.get('/author', function(req, res) {
   res.render('author', { title: 'Créditos' });
 });
 
+router.get('/quizes/statistics', function(req, res) {
+  res.render('statistics', { title: 'Estadísticas' });
+});
+
 module.exports = router;
