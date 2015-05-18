@@ -13,7 +13,8 @@ exports.timeout = function(req, res, next){
 		var time = endDate.getTime();
 		var timeout = models.Quiz.build( req.body.timeout );
 	
-		if((time - req.session.user.startTime) > 120000){
+		//if((time - req.session.user.startTime) > 120000){
+		if((time - req.session.user.startTime) > 5000){
 			delete req.session.user;
 			timeout.validate();
 			//window.alert('¡Su sesión ha expirado!\n\nIntroduzca de nuevo su usuario y contraseña por favor.');
