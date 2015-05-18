@@ -16,14 +16,6 @@ exports.timeout = function(req, res, next){
 		if((time - req.session.user.startTime) > 5000){
 			delete req.session.user;
 			
-			var userController = require('./user_controller');
-			userController.sessionTimeout(function(error, user){
-		
-			if(error){ // si hay error retornamos mensajes de error de sesión
-				req.session.errors = [{"message": 'Se ha producido un error: ' + error}];
-			
-			return;
-			}
 			res.redirect("/login");  
 		} else{
 			req.session.user.startTime = time;
