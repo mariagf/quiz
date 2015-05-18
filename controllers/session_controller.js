@@ -12,7 +12,7 @@ exports.timeout = function(req, res, next){
 	if(req.session.user){
 		var endDate = new Date();
 		var time = endDate.getTime();
-		//var timeout = models.session.build( req.body.timeout );
+		var timeout = models.session.build( req.body.timeout );
 	console.log("¡Su sesión ha expirado!\n\nIntroduzca de nuevo su usuario y contraseña por favor.'");
 		//if((time - req.session.user.startTime) > 120000){
 		if((time - req.session.user.startTime) > 5000){
