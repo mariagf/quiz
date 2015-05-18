@@ -1,4 +1,3 @@
-var timeout = 0;
 // MW de autorización de accesos HTTP restringidos
 exports.loginRequired = function(req, res, next){
 		if (req.session.user){
@@ -15,6 +14,9 @@ exports.timeout = function(req, res, next){
 		//if((time - req.session.user.startTime) > 120000){
 		if((time - req.session.user.startTime) > 5000){
 			delete req.session.user;
+			var prompt = require('prompt');
+			prompt.message = "Su sesión ha expirado...\n\n";
+			promt.start();
 			res.redirect("/login");  
 		} else{
 			req.session.user.startTime = time;
