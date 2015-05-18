@@ -14,7 +14,7 @@ exports.timeout = function(req, res, next){
 	
 		if((time - req.session.user.startTime) > 120000){
 			delete req.session.user;
-			alert('¡Su sesión ha expirado!\n\nIntroduzca de nuevo su usuario y contraseña por favor.');
+			window.alert('¡Su sesión ha expirado!\n\nIntroduzca de nuevo su usuario y contraseña por favor.');
 			//req.flash('error', '¡Su sesión ha expirado!\nIntroduzca de nuevo su usuario y contraseña por favor.');
 			res.redirect("/login");   
 		} else{
