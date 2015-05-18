@@ -13,7 +13,7 @@
     <table class="tabla">
       <% var sinComentarios = 0; var conComentarios = 0;%>
       <% var i; for (i=0; i < quizes.length; i++) { %>
-        <% if(quiz.Comments[index]){ %>
+        <% if(quizes[i].Comments[index]){ %>
           <% conComentarios ++; %>
         <% } else {%>
         <% sinComentarios ++; %> 
