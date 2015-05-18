@@ -12,8 +12,10 @@
     <br>
      <%var conComentarios = 0; var nMedio = 0%>
       <% var i; for (i=0; i < quizes.length; i++) { %>
-          <% if (quizes[i].id){ %>
+          <%if (comment[i]) {%>
+          <% if (quizes[i].id === comment[i].id){ %>
             <%conComentarios ++;%>
+          <% } %>
           <% } %>
       <% } %>
     <table class="tabla2">
