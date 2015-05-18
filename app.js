@@ -10,7 +10,7 @@ var methodOverride = require('method-override');
 var session = require('express-session');
 
 var routes = require('./routes/index');
-var flash = require('express-flash');
+//var flash = require('express-flash');
 
 //var users = require('./routes/users');
 
@@ -21,7 +21,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 app.use(partials());
-app.use(flash());
+//app.use(flash());
 
 // uncomment after placing your favicon in /public
 app.use(favicon(__dirname + '/public/favicon.ico'));
