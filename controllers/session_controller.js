@@ -14,9 +14,7 @@ exports.timeout = function(req, res, next){
 		//if((time - req.session.user.startTime) > 120000){
 		if((time - req.session.user.startTime) > 5000){
 			delete req.session.user;
-			var prompt = require('prompt');
-			prompt.message = "Su sesión ha expirado...\n\n";
-			promt.start();
+			req.flash("message", {"error" : "Bieeeeen"});
 			res.redirect("/login");  
 		} else{
 			req.session.user.startTime = time;
