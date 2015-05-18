@@ -11,7 +11,8 @@ router.get('/', function(req, res) {
 });
 
 router.get('/statistics', function(req, res) {
-  res.render('quizes/statistics', { title: 'Estadísticas' });
+  res.render('quizes/statistics', { title: 'Estadísticas' ,
+                                    errors: errors[]});
 });
 
 // Autoload de comandos con :quizId
