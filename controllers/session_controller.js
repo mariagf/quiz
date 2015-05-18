@@ -7,12 +7,27 @@ exports.loginRequired = function(req, res, next){
 		}
 };
 
+exports.timeout = function(req, res, next){
+	if(req.session.user){
+		var endDate = new Date();
+		var time = endDate.getTime();
+	
+		if((time - req.session.user.startTime) > 120000){
+			delete req.session.user;
+			req.flash('error', '¡Su sesión ha expirado!\nIntroduzca de nuevo su usuario y contraseña por favor.');
+			res.redirect("/login");   
+		} else{
+			req.session.user.startTime = time;
+		}
+	}
+	next();
+};
+
 // Get /login -- Formulario de login
 exports.new = function(req, res){
-		var errors = req.session.errors || {};
-		req.session.errors = {};
-
-		res.render('sessions/new',{errors: errors});
+	var errors = req.session.errors || {};
+	req.session.errors = {};
+	res.render('sessions/new',{errors: errors});
 };
 
 // POST /login -- Crear la sesión
@@ -24,14 +39,15 @@ exports.create = function(req,res){
 //	var userController = require('../controllers/user_controller');
 	var userController = require('./user_controller');
 	userController.autenticar(login, password, function(error, user){
-	
+	var startDate = new Date();
+	var startTime = startDate.getTime(); // En ms
 	if(error){ // si hay error retornamos mensajes de error de sesión
 		req.session.errors = [{"message": 'Se ha producido un error: ' + error}];
 		res.redirect("/login");
 		return;
 	} // Crear req.session.user y guardar campos id y username
 	  // La sesión se define por la existencia de: req.session.user
-	  	req.session.user = {id:user.id, username:user.username};
+	  	req.session.user = {id:user.id, username:user.username, startTime: startTime};
 	  	
 		res.redirect(req.session.redir.toString()); // redirección a path anterior a login
 	
