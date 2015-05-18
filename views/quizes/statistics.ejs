@@ -10,17 +10,17 @@
    <center>
     <h2><u>Estadísticas de la Base de Datos</u></h2>
     <br>
-    <table class="tabla2">
-      <%var conComentarios = 0; var nMedio = 0%>
+     <%var conComentarios = 0; var nMedio = 0%>
       <% var i; for (i=0; i < quizes.length; i++) { %>
-        <% var j; for (j=0; j < quizes.length; j++) { %>
-          <% if (quizes[i].id === comment[i].QuizId){ %>
+          <% if (quizes[i].id === model[i].QuizId){ %>
             <%conComentarios ++;%>
             <% return; %>
             <% return; %>
           <% } %>
         <% } %>
       <% } %>
+    <table class="tabla2">
+     
       <tr><td align=left>Número de preguntas:</td>
           <td align=center><%=quizes.length%></td></tr>
       <tr><td align=left>Número de comentarios totales:</td>

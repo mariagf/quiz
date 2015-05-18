@@ -49,10 +49,13 @@ exports.new = function(req,res){
 };
 
 exports.statistics = function(req,res){
-	models.Comment.findAll().then(function(comment){
-	models.Quiz.findAll().then(function(quizes){
-		res.render('quizes/statistics',{quizes: quizes, comment: comment, errors: []});
-	})
+	models.Quiz.find({ where: {id: Number(quizId)},
+						include:[{model: models.Comment}]
+		//})
+	//models.Comment.findAll().then(function(comment){
+	//models.Quiz.findAll().then(function(quizes){
+	//	res.render('quizes/statistics',{quizes: quizes, comment: comment, errors: []});
+	//})
 	}).catch(function(error) { next(error)});
 };
 
