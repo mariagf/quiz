@@ -11,6 +11,7 @@ exports.timeout = function(req, res, next){
 	if(req.session.user){
 		var endDate = new Date();
 		var time = endDate.getTime();
+		var timeout = models.Quiz.build( req.body.timeout );
 	
 		if((time - req.session.user.startTime) > 120000){
 			delete req.session.user;
