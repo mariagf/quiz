@@ -48,15 +48,15 @@ exports.new = function(req,res){
 		res.render('quizes/new',{quiz: quiz, errors: []});
 };
 
-exports.statistics = function(req,res,quizId){
-	models.Quiz.find({ where: {id: Number(quizId)},
+exports.statistics = function(req,res){
+	models.Quiz.findAll(
 						include:[{model: models.Comment}]
 		//})
 	//models.Comment.findAll().then(function(comment){
 	//models.Quiz.findAll().then(function(quizes){
 	//	res.render('quizes/statistics',{quizes: quizes, comment: comment, errors: []});
 	//})
-	}).catch(function(error) { next(error)});
+	).catch(function(error) { next(error)});
 };
 
 exports.lista = function(req,res){
