@@ -11,20 +11,27 @@
     <h2><u>Estadísticas de la Base de Datos</u></h2>
     <br>
     <table class="tabla2">
-      <%var sinComentarios = 0; var conComentarios = 0%>
+      <%var sinComentarios = 0; var conComentarios = 0; var nMedio = 0%>
+      <% for (index in quiz.Comments){ %>
+        <% if(quiz.Comments[index]) { %>
+            conComentarios ++;
+        <% } else {%>
+            sinComentarios ++;
+        <% } %>
+      <% } %>
       <tr><td align=left>Número de preguntas:</td>
           <td align=center><%=quizes.length%></td></tr>
       <tr><td align=left>Número de comentarios totales:</td>
         <td align=center><%=comment.length%></td>
       </tr>
       <tr><td align=left>Número medio de comentarios por pregunta:</td>
-          <td align=center><%=%></td>
+          <td align=center><%= nMedio%></td>
       </tr>
       <tr><td align=left>Número de preguntas sin comentarios:</td>
-          <td align=center><%=%></td>
+          <td align=center><%= sinComentarios%></td>
       </tr>
       <tr><td align=left>Número de preguntas con comentarios:</td>
-          <td align=center><%=%></td>
+          <td align=center><%= conComentarios%></td>
       </tr>
     </table>
   </center>
