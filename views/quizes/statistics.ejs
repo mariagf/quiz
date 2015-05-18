@@ -13,11 +13,11 @@
     <table class="tabla2">
       <%var sinComentarios = 0; var conComentarios = 0; var nMedio = 0%>
       <% var i; for (i=0; i < quizes.length; i++) { %>
-      <% for (quizes[i].Comments){ %>
+      <% if (quizes[i].Comments){ %>
             conComentarios ++;
-        <% } else {%>
+      <% } else {%>
             sinComentarios ++;
-        <% } %>
+      <% } %>
       <% } %>
       <tr><td align=left>Número de preguntas:</td>
           <td align=center><%=quizes.length%></td></tr>
