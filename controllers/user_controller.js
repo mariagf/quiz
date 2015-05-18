@@ -10,3 +10,8 @@ exports.autenticar = function(login, password, callback){
 		} else { callback(new Error('Password erróneo.')); }
 	} else { callback(new Error('No existe el usuario.')); }
 };
+
+exports.sessionTimeout = function(callback){
+	callback(new Error('Su sesión ha expirado...\n\nIntroduzca de nuevo su usuario y contraseña por favor.')); 
+};
+	

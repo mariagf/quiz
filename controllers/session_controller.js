@@ -15,8 +15,16 @@ exports.timeout = function(req, res, next){
 		//if((time - req.session.user.startTime) > 120000){
 		if((time - req.session.user.startTime) > 5000){
 			delete req.session.user;
-			timeout = 1;
-			res.redirect("/login");   
+			
+			var userController = require('./user_controller');
+			userController.sessionTimeout(function(error, user){
+		
+			//if(error){ // si hay error retornamos mensajes de error de sesión
+				req.session.errors = [{"message": 'Se ha producido un error: ' + error}];
+			
+			//return;
+			//}
+			res.redirect("/login");  
 		} else{
 			req.session.user.startTime = time;
 		}
@@ -28,10 +36,6 @@ exports.timeout = function(req, res, next){
 exports.new = function(req, res){
 	var errors = req.session.errors || {};
 	req.session.errors = {};
-	if (timeout === 1){
-		timeout = 0;
-		req.session.errors = [{"message": 'Su sesión ha expirado...\n\nIntroduzca de nuevo su usuario y contraseña por favor.'}];
-	}
 	res.render('sessions/new',{errors: errors});
 };
 
@@ -41,7 +45,6 @@ exports.create = function(req,res){
 	var login = req.body.login;
 	var password = req.body.password;
 
-//	var userController = require('../controllers/user_controller');
 	var userController = require('./user_controller');
 	userController.autenticar(login, password, function(error, user){
 	var startDate = new Date();
