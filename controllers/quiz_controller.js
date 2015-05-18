@@ -48,6 +48,10 @@ exports.new = function(req,res){
 		res.render('quizes/new',{quiz: quiz, errors: []});
 };
 
+exports.statistics = function(req,res){
+	res.render('quizes/statistics',{quizes: quizes, errors: []});
+};
+
 exports.lista = function(req,res){
 	var x = req.query.busqueda;
 	var y = x.replace(/\s+/g, '%');
