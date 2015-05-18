@@ -48,7 +48,7 @@ exports.new = function(req,res){
 		res.render('quizes/new',{quiz: quiz, errors: []});
 };
 
-exports.statistics = function(req,res){
+exports.statistics = function(req,res,quizId){
 	models.Quiz.find({ where: {id: Number(quizId)},
 						include:[{model: models.Comment}]
 		//})
