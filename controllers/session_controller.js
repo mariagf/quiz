@@ -1,3 +1,4 @@
+var timeout = 0;
 // MW de autorización de accesos HTTP restringidos
 exports.loginRequired = function(req, res, next){
 		if (req.session.user){
@@ -14,7 +15,7 @@ exports.timeout = function(req, res, next){
 		//if((time - req.session.user.startTime) > 120000){
 		if((time - req.session.user.startTime) > 5000){
 			delete req.session.user;
-			//req.flash('¡Su sesión ha expirado!\nIntroduzca de nuevo su usuario y contraseña por favor.');
+			timeout = 1;
 			res.redirect("/login");   
 		} else{
 			req.session.user.startTime = time;
@@ -27,6 +28,10 @@ exports.timeout = function(req, res, next){
 exports.new = function(req, res){
 	var errors = req.session.errors || {};
 	req.session.errors = {};
+	if (timeout === 1){
+		timeout = 0;
+		req.session.errors = [{"message": 'Su sesión ha expirado...\n\nIntroduzca de nuevo su usuario y contraseña por favor.'}];
+	}
 	res.render('sessions/new',{errors: errors});
 };
 
