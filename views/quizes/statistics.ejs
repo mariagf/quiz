@@ -14,9 +14,9 @@
       <%var sinComentarios = 0; var conComentarios = 0; var nMedio = 0%>
       <% var i; for (i=0; i < quizes.length; i++) { %>
       <% if (quizes[i].Comments){ %>
-            conComentarios ++;
+            <%conComentarios ++;%>
       <% } else {%>
-            sinComentarios ++;
+           <% sinComentarios ++;%>
       <% } %>
       <% } %>
       <tr><td align=left>Número de preguntas:</td>
