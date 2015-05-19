@@ -12,6 +12,13 @@
     <br>
      <%var conComentarios = 0; var nMedio = 0%>
 
+    <% var i; for (i=0; i < quizes.length; i++) { %>
+      <% for (index in quizes[i].Comments){ %>
+        <% if(quizes[i].Comments[index].publicado || quizes[i].Comments[index].texto) { %>
+        <% conComentarios++; %>
+        <% } %>
+    <% } %>
+  <% } %>
     <table class="tabla2">
      
       <tr><td align=left>Número de preguntas:</td>
