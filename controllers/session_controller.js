@@ -16,7 +16,7 @@ exports.timeout = function(req, res, next, callback){
 			delete req.session.user;
 			//req.flash("message", {"error" : "Bieeeeen"});
 			//req.session.errors = [{"message": 'Se ha producido un error: ' + error}];
-			callback(new Error('oliiii')
+			callback(new Error('oliiii'));
 			res.redirect("/login"); 
 		} else{
 			req.session.user.startTime = time;
