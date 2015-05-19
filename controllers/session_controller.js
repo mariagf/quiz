@@ -16,12 +16,12 @@ exports.timeout = function(req, res, next){
 			delete req.session.user;
 			//req.flash("message", {"error" : "Bieeeeen"});
 			res.redirect("/login"); 
-			next(new Error('Oliii!')); 
 		} else{
 			req.session.user.startTime = time;
-			next();
+			
 		}
 	}
+	next();
 	
 };
 
