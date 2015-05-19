@@ -14,17 +14,17 @@
 
     <% var i; for (i=0; i < quizes.length; i++) { %>
       <% for (index in quizes[i].Comments){ %>
-         <% alert('0'); %>
+         alert('0');
         <% if(quizes[i].Comments[index].publicado){ %>
         <% conComentarios++; %>
-        <% alert('1'); %>
+        alert('1');
         <% } %>
         <% if(quizes[i].Comments[index].texto) { %>
         <% conComentarios = conComentarios+1; %>
-        <% alert('2'); %>
+        alert('2');
         <% } %>
     <% } %>
-    <% alert('Fin'); %>
+    alert('Fin');
   <% } %>
     <table class="tabla2">
      
