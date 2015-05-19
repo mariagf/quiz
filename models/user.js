@@ -8,7 +8,7 @@ module.exports = function(sequelize, DataTypes){
 		username: {
 			type: DataTypes.STRING,
 			unique: true,
-			validate: { notEmpty: {msg: "-> Falta username"}},
+			validate: { notEmpty: {msg: "-> Falta username"},
 			// -> devuelve mensaje de error si username ya existe
 			isUnique: function (value, next){
 					var self = this;
@@ -19,6 +19,7 @@ module.exports = function(sequelize, DataTypes){
 						}
 						return next();
 					}).catch(function (err) {return next(err);});
+				}
 			}
 		},
 		  password: {
