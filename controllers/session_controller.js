@@ -18,7 +18,7 @@ exports.timeout = function(req, res, next){
 			//validate.notNull(null, "The object must not be null");
 			//next(new Error('Olii'));
 			req.flash('error', 'La sesión ha expirado.');
-			res.redirect({"/login",errors: []});  
+			res.redirect("/login");  
 		} else{
 			req.session.user.startTime = time;
 		}
