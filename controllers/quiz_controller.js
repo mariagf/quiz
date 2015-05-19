@@ -81,7 +81,7 @@ exports.lista = function(req,res){
 	var y = x.replace(/\s+/g, '%');
 	models.Quiz.findAll({where: ["pregunta like ?", '%' + y + '%'], order: [["pregunta", 'ASC']]}).then(function(quizes){
 
-		res.render('quizes/lista',{quizes: quizes});
+		res.render('quizes/lista',{quizes: quizes, errors: []});
 	})
 };
 
