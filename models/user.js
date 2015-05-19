@@ -38,7 +38,9 @@ module.exports = function(sequelize, DataTypes){
 		  isAdmin: {
 		  	type: DataTypes.BOOLEAN,
 		  	defaultValue: false
+		  }
 		},
+		{
 		  instanceMethods: {
 		  	verifyPassword: function(password){
 		  		var encripted = crypto
@@ -47,6 +49,7 @@ module.exports = function(sequelize, DataTypes){
 		  						.digest('hex');
 		  		return encripted === this.password;
 		  	}
+		  }
 		}
 	});
 	return User;
