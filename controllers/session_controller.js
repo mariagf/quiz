@@ -1,4 +1,3 @@
-var models = require('../models/models.js');
 // MW de autorización de accesos HTTP restringidos
 exports.loginRequired = function(req, res, next){
 		if (req.session.user){
@@ -15,9 +14,7 @@ exports.timeout = function(req, res, next){
 		//if((time - req.session.user.startTime) > 120000){
 		if((time - req.session.user.startTime) > 5000){
 			delete req.session.user;
-			//validate.notNull(null, "The object must not be null");
-			//next(new Error('Olii'));
-			//req.flash('info', 'La sesión ha expirado.');
+			//req.flash("message", {"error" : "Bieeeeen"});
 			res.redirect("/login");  
 		} else{
 			req.session.user.startTime = time;
