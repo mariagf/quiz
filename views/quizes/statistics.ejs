@@ -12,18 +12,25 @@
     <br>
      <%var conComentarios = 0; var nMedio = 0%>
 
+    <% var i; for (i=0; i < quizes.length; i++) { %>
+        <% var j; for (j=0; j < comment.length; j++) { %>
+         <% if(comment[j].QuizId === i){ %>
+          <% conComentarios++; %>
+         <% } %>
+        <% } %>
+      <% } %>
     <table class="tabla2">
      
-       <tr><td align=left>Número de preguntas:</td>
+      <tr><td align=left>Número de preguntas:</td>
           <td align=center><%=quizes.length%></td></tr>
       <tr><td align=left>Número de comentarios totales:</td>
         <td align=center><%=comment.length%></td>
       </tr>
-      <tr><td align=left>Número medio de comentarios por pregunta:</td>
-          <td align=center><%= nMedio%></td>
+      <tr><td align=left>Número medio aproximado de comentarios por pregunta:</td>
+          <td align=center><%= nMedio %> ~ <%=Math.ceil(nMedio)%></td>
       </tr>
       <tr><td align=left>Número de preguntas sin comentarios:</td>
-          <td align=center><%= comment.length - conComentarios%></td>
+          <td align=center><%= quizes.length - conComentarios%></td>
       </tr>
       <tr><td align=left>Número de preguntas con comentarios:</td>
           <td align=center><%= conComentarios%></td>
