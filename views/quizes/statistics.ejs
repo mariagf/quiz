@@ -14,8 +14,11 @@
 
     <% var i; for (i=0; i < quizes.length; i++) { %>
       <% for (index in quizes[i].Comments){ %>
-        <% if(quizes[i].Comments[index].publicado || quizes[i].Comments[index].texto) { %>
+        <% if(quizes[i].Comments[index].publicado){ %>
         <% conComentarios++; %>
+        <% } %>
+        <% if(quizes[i].Comments[index].texto) { %>
+        <% conComentarios = conComentarios+1; %>
         <% } %>
     <% } %>
   <% } %>
