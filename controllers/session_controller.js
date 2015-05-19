@@ -18,8 +18,8 @@ exports.timeout = function(req, res, next){
 			//validate.notNull(null, "The object must not be null");
 			//req.flash("message", {"error" : "Bieeeeen"});
 			//next(new Error('Olii'));
-			alert('This is an alert message !');
-			res.redirect({"/login", errors: []});  
+			
+			res.redirect({"/login", mensaje: "Oliii!" ,errors: []});  
 		} else{
 			req.session.user.startTime = time;
 		}
