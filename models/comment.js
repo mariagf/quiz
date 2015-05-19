@@ -9,6 +9,10 @@ module.exports = function(sequelize, DataTypes){
     publicado: {
         type: DataTypes.BOOLEAN,
         defaultValue: false
+    },
+    QuizId: {
+        type: DataTypes.INTEGER,
+        defaultValue: null
     }
   });
 }

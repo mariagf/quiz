@@ -12,21 +12,16 @@
     <br>
      <%var conComentarios = 0; var nMedio = 0%>
 
-    
-      <% for (index in quiz.Comments){ %>
       <% var i; for (i=0; i < quizes.length; i++) { %>
+        <% var j; for (j=0; j < comment.length; j++) { %>
          alert('0');
-        <% if(quiz.Comments[index].publicado){ %>
-        <% conComentarios++; %>
-        alert('1');
+         <% if(comment[j].QuizId === i){ %>
+          <% conComentarios++; %>
+          alert('1');
+         <% } %>
         <% } %>
-        <% if(quiz.Comments[index].texto) { %>
-        <% conComentarios = conComentarios+1; %>
-        alert('2');
-        <% } %>
-    <% } %>
-    alert('Fin');
-  <% } %>
+      alert('Fin');
+      <% } %>
     <table class="tabla2">
      
       <tr><td align=left>Número de preguntas:</td>
