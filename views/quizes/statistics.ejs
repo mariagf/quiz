@@ -12,8 +12,9 @@
     <br>
      <%var conComentarios = 0; var nMedio = 0%>
 
-    <% var i; for (i=0; i < quizes.length; i++) { %>
+    
       <% for (index in quizes[i].Comments){ %>
+      <% var i; for (i=0; i < quizes.length; i++) { %>
          alert('0');
         <% if(quizes[i].Comments[index].publicado){ %>
         <% conComentarios++; %>
