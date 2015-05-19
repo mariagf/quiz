@@ -80,11 +80,4 @@ app.use(function(err, req, res, next) {
     });
 });
 
-app.dynamicHelpers({
-    info: function (req, res) {
-        return req.flash('info');
-    }
-});
-
-
 module.exports = app;
