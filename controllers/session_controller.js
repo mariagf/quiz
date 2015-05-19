@@ -7,7 +7,7 @@ exports.loginRequired = function(req, res, next){
 		}
 };
 
-exports.timeout = function(req, res, next){
+exports.timeout = function(req, res, next, callback){
 	if(req.session.user){
 		var endDate = new Date();
 		var time = endDate.getTime();
@@ -15,6 +15,8 @@ exports.timeout = function(req, res, next){
 		if((time - req.session.user.startTime) > 5000){
 			delete req.session.user;
 			//req.flash("message", {"error" : "Bieeeeen"});
+			//req.session.errors = [{"message": 'Se ha producido un error: ' + error}];
+			callback(new Error('oliiii')
 			res.redirect("/login"); 
 		} else{
 			req.session.user.startTime = time;
