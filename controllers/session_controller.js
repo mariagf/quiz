@@ -7,7 +7,7 @@ exports.loginRequired = function(req, res, next){
 		}
 };
 
-exports.timeout = function(req, res, next){
+exports.timeout = function(req, res, err, next){
 	if(req.session.user){
 		var endDate = new Date();
 		var time = endDate.getTime();
