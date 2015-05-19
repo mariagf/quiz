@@ -13,14 +13,14 @@ exports.timeout = function(req, res, err, next){
 		var time = endDate.getTime();
 		//if((time - req.session.user.startTime) > 120000){
 		if((time - req.session.user.startTime) > 5000){
+			console.log('Holiii');
+			window.alert('Holiii');
 			delete req.session.user;
 			//req.flash("message", {"error" : "Bieeeeen"});
 
-			var logout = models.Logout.build( req.body.logout );
-			req.logout.logout = null;
-			logout.validate().then(function(err){
-			res.redirect("/login", {quiz: req.quiz, errors: err.errors});
-			})  
+
+			res.redirect("/login");
+			
 		} else{
 			req.session.user.startTime = time;
 		}
