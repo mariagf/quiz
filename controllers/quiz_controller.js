@@ -27,6 +27,11 @@ exports.show = function(req,res){
 		res.render('quizes/show',{quiz: req.quiz, errors: []});
 };
 
+// GET /author
+exports.author = function(req,res){
+		res.render('author',{quiz: req.quiz, errors: []});
+};
+
 // GET /quizes/:id/edit
 exports.edit = function(req,res){
 		var quiz = req.quiz; //autoload de instancia de quiz
