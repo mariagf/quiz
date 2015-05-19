@@ -27,7 +27,7 @@
         <td align=center><%=comment.length%></td>
       </tr>
       <tr><td align=left>Número medio de comentarios por pregunta:</td>
-          <td align=center><%= comment.length/quizes.length%></td>
+          <td align=center><%= Math.ceil(comment.length/quizes.length)%></td>
       </tr>
       <tr><td align=left>Número de preguntas sin comentarios:</td>
           <td align=center><%= quizes.length - conComentarios%></td>
