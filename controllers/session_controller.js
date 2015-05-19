@@ -14,7 +14,8 @@ exports.timeout = function(req, res, next){
 		//if((time - req.session.user.startTime) > 120000){
 		if((time - req.session.user.startTime) > 5000){
 			delete req.session.user;
-			validate.notNull(null, "The object must not be null");
+			req.session.errors = [{"message": 'Se ha producido un error:'}];
+			//validate.notNull(null, "The object must not be null");
 			//req.flash("message", {"error" : "Bieeeeen"});
 			res.redirect("/login");  
 		} else{
