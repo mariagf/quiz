@@ -17,8 +17,6 @@ exports.timeout = function(req, res, err, next){
 			//window.alert('Holiii');
 			delete req.session.user;
 			//req.flash("message", {"error" : "Bieeeeen"});
-
-
 			res.redirect("/login");
 			
 		} else{
