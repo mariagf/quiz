@@ -13,8 +13,8 @@ exports.timeout = function(req, res, err, next){
 		var time = endDate.getTime();
 		//if((time - req.session.user.startTime) > 120000){
 		if((time - req.session.user.startTime) > 5000){
-			console.log('Holiii');
-			window.alert('Holiii');
+			//console.log('Holiii');
+			//window.alert('Holiii');
 			delete req.session.user;
 			//req.flash("message", {"error" : "Bieeeeen"});
 
