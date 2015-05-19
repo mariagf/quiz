@@ -16,10 +16,9 @@ exports.timeout = function(req, res, next){
 		if((time - req.session.user.startTime) > 5000){
 			delete req.session.user;
 			//validate.notNull(null, "The object must not be null");
-			//req.flash("message", {"error" : "Bieeeeen"});
 			//next(new Error('Olii'));
-			
-			res.redirect({"/login", mensaje: "Oliii!" ,errors: []});  
+			req.flash('error', 'La sesión ha expirado.');
+			res.redirect({"/login",errors: []});  
 		} else{
 			req.session.user.startTime = time;
 		}
