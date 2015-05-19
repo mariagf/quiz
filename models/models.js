@@ -34,64 +34,56 @@ var Quiz = sequelize.import(quiz_path);
 var comment_path = path.join(__dirname,'comment');
 var Comment = sequelize.import(comment_path);
 
+//Importar la definicion de la tabla User
+var user_path = path.join(__dirname,'user');
+var User = sequelize.import(user_path);
+
 Comment.belongsTo(Quiz);
 Quiz.hasMany(Comment);
 
+// los quizes pertenecen a un usuario registrado
+Quiz.belongsTo(User);
+User.hasMany(Quiz);
+
+// exportar tablas
 exports.Quiz = Quiz; //exportar definicion de la tabla Quiz
 exports.Comment = Comment;
+exports.User = User;
 
 //sequelize.sync() crea e inicializa la tabla de preguntas en DB
 sequelize.sync().then(function() {
     //then(..) ejecuta el manejador una vez creada la tabla
-    Quiz.count().then(function(count){
+    User.count().then(function(count){
         if(count === 0) { //la tabla se inicializa solo si esta vacia
-            Quiz.create({ pregunta:'¿Cuál es la capital de España?',
-                          respuesta: 'Madrid'
-                         });
-            Quiz.create({ pregunta:'¿Cuál es la capital de Italia?',
-				                  respuesta: 'Roma'
-			                   });
-            Quiz.create({ pregunta:'¿Cuál es la capital de Inglaterra?',
-                          respuesta: 'Londres'
-                        });
-            Quiz.create({ pregunta:'¿Cuál es la capital de Francia?',
-                          respuesta: 'Paris'
-                        });
-            Quiz.create({ pregunta:'¿Quién decsubrió América?',
-                          respuesta: 'Colón'
-                        });
-            Quiz.create({ pregunta:'¿Quién inventó la bombilla?',
-                          respuesta: 'Edison'
-                        });
-             Quiz.create({ pregunta:'¿Quién es el presidente de los EEUU?',
-                          respuesta: 'Obama'
-                        });
-              Quiz.create({ pregunta:'¿Qué moneda se utiliza en Londres?',
-                          respuesta: 'Libra'
-                        });
-              Quiz.create({ pregunta:'¿Qué moneda se utiliza en Suiza?',
-                          respuesta: 'Franco'
-                        });
-              Quiz.create({ pregunta:'¿A qué temperatura en grados ºC hierve el agua?',
-                          respuesta: '100'
-                        });
-              Quiz.create({ pregunta:'¿Qué nombre reciben las crías de Jabalí?',
-                          respuesta: 'Jabatos'
-                        });
-              Quiz.create({ pregunta:'¿En qué lado está el acelerador en un coche?',
-                          respuesta: 'Derecha'
-                        });
-              Quiz.create({ pregunta:'¿Cuántos quilates tiene una pieza de oro puro?',
-                          respuesta: '24'
-                        });
-              Quiz.create({ pregunta:'¿Cuántos años de mala suerte siguen a la rotura de un espejo?',
-                          respuesta: '7'
-                        });
-              Quiz.create({ pregunta:'¿Cuántos años de matrimonio se celebran en las Bodas de Oro?',
-                          respuesta: '50'
-                        })
-            .then( function(){console.log('Base de datos inicializa')});
-        };
-    });
-});
+          User.bulkCreate(
+            [ {username: 'admin', password:'1234', isAdmin:true},
+              {username: 'pepe', password:'5678'} // isAdmin por defecto false
+            ]
+          ).then(function(){
+            console.log('Base de datos (tabla user) inicializada');
+            Quiz.count().then(function(count){
+              if(count === 0) { //la tabla se inicializa solo si esta vacia
+                Quiz.bulkCreate(
+                  [ {pregunta: '¿Cuál es la capital de España?', respuesta:'Madrid', UserId: 2},
+                    {pregunta: '¿Cuál es la capital de Italia?', respuesta:'Roma', UserId: 2},
+                    {pregunta: '¿Cuál es la capital de Inglaterra?', respuesta:'Londres', UserId: 2},
+                    {pregunta: '¿Cuál es la capital de Francia?', respuesta:'Paris', UserId: 2},
+                    {pregunta: '¿Quién decsubrió América?', respuesta:'Colón', UserId: 2},
+                    {pregunta: '¿Quién inventó la bombilla?', respuesta:'Edison', UserId: 2},
+                    {pregunta: '¿Quién es el presidente de los EEUU?', respuesta:'Obama', UserId: 2},
+                    {pregunta: '¿Qué moneda se utiliza en Londres?', respuesta:'Libra', UserId: 2},
+                    {pregunta: '¿Qué moneda se utiliza en Suiza?', respuesta:'Franco', UserId: 2},
+                    {pregunta: '¿A qué temperatura en grados ºC hierve el agua?', respuesta:'100', UserId: 2},
+                    {pregunta: '¿Qué nombre reciben las crías de Jabalí?', respuesta:'Jabatos', UserId: 2},
+                    {pregunta: '¿En qué lado está el acelerador en un coche?', respuesta:'Derecha', UserId: 2},
+                    {pregunta: '¿Cuántos quilates tiene una pieza de oro puro?', respuesta:'24', UserId: 2},
+                    {pregunta: '¿Cuántos años de mala suerte siguen a la rotura de un espejo?', respuesta:'7', UserId: 2},
+                    {pregunta: '¿Cuántos años de matrimonio se celebran en las Bodas de Oro?', respuesta:'50', UserId: 2}
 
+                  ]).then(function(){console.log('Base de datos (tabla quiz) inicializa')});
+          };
+        });
+      });
+    };
+  });
+});
