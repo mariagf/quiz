@@ -14,17 +14,12 @@ exports.timeout = function(req, res, next, callback){
 		//if((time - req.session.user.startTime) > 120000){
 		if((time - req.session.user.startTime) > 5000){
 			delete req.session.user;
-			//req.flash("message", {"error" : "Bieeeeen"});
-			//req.session.errors = [{"message": 'Se ha producido un error: ' + error}];
-			//new Error('oliiii');
 			res.redirect("/login"); 
 		} else{
 			req.session.user.startTime = time;
-			
 		}
 	}
 	next();
-	
 };
 
 // Get /login -- Formulario de login
