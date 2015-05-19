@@ -16,11 +16,11 @@
       <% for (index in quiz.Comments){ %>
       <% var i; for (i=0; i < quizes.length; i++) { %>
          alert('0');
-        <% if(quizes[i].Comments[index].publicado){ %>
+        <% if(quizes.Comments[index].publicado){ %>
         <% conComentarios++; %>
         alert('1');
         <% } %>
-        <% if(quizes[i].Comments[index].texto) { %>
+        <% if(quizes.Comments[index].texto) { %>
         <% conComentarios = conComentarios+1; %>
         alert('2');
         <% } %>
