@@ -31,7 +31,7 @@ module.exports = function(sequelize, DataTypes){
 		  						.update(password)
 		  						.digest('hex');
 		  		// Evita passwords vacíos
-		  		if (password ===''){encripted = '';}
+		  		if (password === '') {encripted = '';}
 		  		this.setDataValue('password', encripted);
 		  	}
 		},
@@ -44,6 +44,9 @@ module.exports = function(sequelize, DataTypes){
 		  instanceMethods: {
 		  	verifyPassword: function(password){
 		  		var encripted = crypto
+		  						.createHmac('sha1', key)
+		  						.update(password)
+		  						.digest('hex');
 		  		return encripted === this.password;
 		  	}
 		}

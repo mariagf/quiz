@@ -42,7 +42,7 @@ Comment.belongsTo(Quiz);
 Quiz.hasMany(Comment);
 
 // los quizes pertenecen a un usuario registrado
-Quiz.belongsTo(Quiz);
+Quiz.belongsTo(User);
 User.hasMany(Quiz);
 
 // exportar tablas
@@ -80,7 +80,7 @@ sequelize.sync().then(function() {
                     {pregunta: '¿Cuántos años de mala suerte siguen a la rotura de un espejo?', respuesta:'7', UserId: 2},
                     {pregunta: '¿Cuántos años de matrimonio se celebran en las Bodas de Oro?', respuesta:'50', UserId: 2}
 
-                  ]).then( function(){console.log('Base de datos (tabla quiz) inicializa')});
+                  ]).then(function(){console.log('Base de datos (tabla quiz) inicializa')});
           };
         });
       });
