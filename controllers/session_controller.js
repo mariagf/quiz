@@ -1,3 +1,4 @@
+var flag = 0;
 // MW de autorización de accesos HTTP restringidos
 exports.loginRequired = function(req, res, next){
 		if (req.session.user){
@@ -14,6 +15,7 @@ exports.timeout = function(req, res, next){
 		//if((time - req.session.user.startTime) > 120000){
 		if((time - req.session.user.startTime) > 5000){
 			delete req.session.user;
+			flag = 1;
 			//req.flash("message", {"error" : "Bieeeeen"});
 			res.redirect("/login");  
 		} else{
@@ -27,7 +29,12 @@ exports.timeout = function(req, res, next){
 exports.new = function(req, res){
 	var errors = req.session.errors || {};
 	req.session.errors = {};
-	res.render('sessions/new',{errors: errors});
+	if (flag == 1){
+		flag = 0;
+		res.render('sessions/new2',{errors: errors});
+	} else{
+		res.render('sessions/new',{errors: errors});
+	}
 };
 
 // POST /login -- Crear la sesión
