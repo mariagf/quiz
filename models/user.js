@@ -40,7 +40,7 @@ module.exports = function(sequelize, DataTypes){
 		  	defaultValue: false
 		  //}
 		},
-		{
+		//{
 		  instanceMethods: {
 		  	verifyPassword: function(password){
 		  		var encripted = crypto
