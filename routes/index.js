@@ -38,6 +38,6 @@ router.param('commentId', commentController.load); //autoload :commentId
   router.post('/quizes/:quizId(\\d+)/comments', commentController.create);
   router.get('/quizes/:quizId(\\d+)/comments/:commentId(\\d+)/publish', sessionController.timeout, sessionController.loginRequired, commentController.publish);
 
-  router.put('/author', quizController.author);
+  router.get('/author', quizController.author);
 
 module.exports = router;
