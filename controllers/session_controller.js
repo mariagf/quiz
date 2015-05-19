@@ -13,7 +13,7 @@ exports.timeout = function(req, res, next){
 		var endDate = new Date();
 		var time = endDate.getTime();
 		//if((time - req.session.user.startTime) > 120000){
-		if((time - req.session.user.startTime) > 5000){
+		if((time - req.session.user.startTime) > 12000){
 			delete req.session.user;
 			flag = 1;
 			//req.flash("message", {"error" : "Bieeeeen"});
