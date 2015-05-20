@@ -26,9 +26,9 @@ router.param('userId', userController.load); //autoload :userId
 // Definición de rutas de cuenta
   router.get('/user', userController.new);
   router.post('/user', userController.create);
-  router.get('/user/:userId(\\d+)/edit', sessionController.loginRequired, userController.ownershipRequired, userController.edit);
-  router.put('/user/:userId(\\d+)', sessionController.loginRequired, userController.ownershipRequired, userController.update);
-  router.delete('/user/:userId(\\d+)', sessionController.loginRequired, userController.ownershipRequired, userController.destroy);
+  router.get('/user/:userId(\\d+)/edit', sessionController.loginRequired, userController.edit);
+  router.put('/user/:userId(\\d+)', sessionController.loginRequired, userController.update);
+  router.delete('/user/:userId(\\d+)', sessionController.loginRequired, userController.destroy);
 
 // Definición de rutas de /quizes
   router.get('/quizes', sessionController.timeout, quizController.index);
