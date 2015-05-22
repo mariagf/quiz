@@ -10,8 +10,6 @@ var methodOverride = require('method-override');
 var session = require('express-session');
 
 var routes = require('./routes/index');
-//var flash = require('connect-flash');
-
 //var users = require('./routes/users');
 
 var app = express();
