@@ -94,7 +94,7 @@ exports.lista = function(req,res){
 
 // POST /quizes/create
 exports.create = function(req,res){
-	req.body.quizId = req.session.user.id;
+	req.body.quiz.UserId = req.session.user.id;
 	
 	if(req.files.image){
 		req.body.quiz.image = req.files.image.name;
