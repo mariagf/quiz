@@ -8,7 +8,7 @@
 
   <body>
    <center>
-    <table class="tabla">
+    <table>
        <% var i; for (i=0; i < quizes.length; i++) { %>
         <tr><td align=center><a href="quizes/<%= quizes[i].id %>">Pregunta <%= i+1 %>. <%= quizes[i].pregunta %></a></td></tr>
      <% } %>
