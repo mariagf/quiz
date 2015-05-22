@@ -30,8 +30,8 @@ exports.load = function(req, res, next, quizId){
 };
 
 // GET /quizes
-// GET /users/.userId/quizes
-exports.index = function(req, res, next){
+// GET /users/:userId/quizes
+exports.index = function(req, res){
 	var options = {};
 	if(req.user){
 		options.where = {UserId: req.user.id}
@@ -39,8 +39,7 @@ exports.index = function(req, res, next){
 
 	models.Quiz.findAll(options).then(function(quizes){
 		res.render('quizes/index', {quizes: quizes, errors: []});
-	//}).catch(function(error) { next(error)});
-	}).catch(function(error) { next()});
+	}).catch(function(error) { next(error)});
 };
 
 // GET /quizes/:id
@@ -94,6 +93,7 @@ exports.lista = function(req,res){
 
 // POST /quizes/create
 exports.create = function(req,res){
+
 	req.body.quiz.UserId = req.session.user.id;
 	
 	if(req.files.image){
@@ -108,13 +108,13 @@ exports.create = function(req,res){
 		res.render('quizes/new', {quiz:quiz, errors: err.errors});
 
 	} else{ // guarda en DB los campos pregunta y respuesta de quiz
-	quiz.save({fields: ["pregunta", "respuesta", "UserId"]}).then(function(){
+	quiz.save({fields: ["pregunta", "respuesta", "UserId", "image"]}).then(function(){
 
 		res.redirect('/quizes')
 	}) // res.redirect: Redirección HTTP a lista de preguntas
 	}
    }
-  );
+  ).catch(function(error){next(error)});
 };
 
 // PUT /quizes/:id
