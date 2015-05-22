@@ -30,6 +30,7 @@ router.param('userId', userController.load); //autoload :userId
   router.get('/user/:userId(\\d+)/edit', sessionController.loginRequired, userController.ownershipRequired, userController.edit);
   router.put('/user/:userId(\\d+)', sessionController.loginRequired, userController.ownershipRequired, userController.update);
   router.delete('/user/:userId(\\d+)', sessionController.loginRequired, userController.ownershipRequired, userController.destroy);
+  router.get('/user/:userId(\\d+)/quizes', sessionController.loginRequired, userController.ownershipRequired, quizController.index);
 
 // Definición de rutas de /quizes
   router.get('/quizes', sessionController.timeout, quizController.index);
