@@ -31,7 +31,7 @@ exports.load = function(req, res, next, quizId){
 
 // GET /quizes
 // GET /users/.userId/quizes
-exports.index = function(req,res){
+exports.index = function(req, res, next){
 	var options = {};
 	if(req.user){
 		options.where = {UserId: req.user.id}
