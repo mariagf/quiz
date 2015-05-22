@@ -31,7 +31,7 @@ exports.load = function(req, res, next, quizId){
 
 // GET /quizes
 // GET /users/.userId/quizes
-exports.index = function(req, res){
+exports.index = function(req, res, next){
 	var options = {};
 	if(req.user){
 		options.where = {UserId: req.user.id}
@@ -60,7 +60,7 @@ exports.edit = function(req,res){
 };
 
 // DELETE /quizes/:id
-exports.destroy = function(req,res){
+exports.destroy = function(req,res, next){
 		req.quiz.destroy().then(function(){
 		res.redirect('/quizes');
 	}).catch(function(error) { next(error)});
@@ -74,7 +74,7 @@ exports.new = function(req,res){
 		res.render('quizes/new',{quiz: quiz, errors: []});
 };
 
-exports.statistics = function(req,res){
+exports.statistics = function(req,res, next){
 	
 	models.Comment.findAll().then(function(comment){
 	models.Quiz.findAll().then(function(quizes){
