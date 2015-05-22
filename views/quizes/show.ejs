@@ -7,7 +7,9 @@
   </head>
   <body>
     <% if(quiz.image){ %>
-      <p><img class="quiz_img" src="/media/<%= quiz.image %>"></p>
+      <br>
+      <img class="quiz_img" src="/media/<%= quiz.image %>" style="padding-left: 30px">
+    
     <% } %>
     <form method="get" action="/quizes/<%= quiz.id %>/answer">
       <p>Pregunta: <%= quiz.pregunta%></p>
