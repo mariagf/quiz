@@ -3,11 +3,8 @@
   <head>
     <meta charset="utf-8"><title>Quiz</title>
     <link rel='stylesheet' type="text/css" href='/stylesheets/style.css' />
-      
     <link rel="stylesheet" type="text/css" media="only screen and (min-width: 530px) and (min-device-width: 481px)" href= "/stylesheets/wide.css"/>
-    
-    <link rel="stylesheet" type="text/css" media="only screen and (max-width: 480px)" href="/stylesheets/smartphone.css"/>
-    
+    <link rel="stylesheet" type="text/css" media="only screen and (max-width: 480px)" href="/stylesheets/smartphone.css"/> 
   </head>
   <body>
   <div id="page-wrap">
@@ -37,12 +34,13 @@
         <%if(session.user){%>
         <span><a href="/user/<%=session.user.id%>/quizes">Mis Preguntas</a></span>
         <br><br>
+        <span><a href="/user/<%=session.user.id%>/favourites">Mis Favoritos</a></span>
+        <br><br>
         <%}%>
         <span><a href="/statistics">Estadísticas</a></span>
         <br><br>
         <span><a href="/author">Créditos</a></span>
       </nav>
-      
     <section class="main" id="s1">
      <% if (errors.length) { %>
       <span id='ErrorMsgs' >
@@ -54,7 +52,6 @@
        <% } %>
       <div> <%-body%></div>
     </section>
-      
     <footer class="main" id="f1">
         <a href="http://es.wikipedia.org/wiki/Quiz">¿Qué es un Quiz?</a>
         <br>

@@ -1,40 +1,65 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link rel='icon' href='favicon.ico' type='image/x-icon' />
-    <title>Quiz</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
+      <link rel="icon" href="favicon.ico" type="image/x-icon" />
+      <link rel="stylesheet" type="text/css" media="only screen and (min-width: 530px) and (min-device-width: 481px)" href= "/stylesheets/wide.css"/>
+    <link rel="stylesheet" type="text/css" media="only screen and (max-width: 480px)" href="/stylesheets/smartphone.css"/>
   </head>
-
   <body>
-    <form name="buscador" id="finder" action="/lista" method="get">
-        Buscador: <input type="text" name="busqueda" value="Texto a buscar...">
-        <button type="submit">Buscar</button>
-    </form>
-    <br>
-    <center>
-    <table>
-    <% var i; for (i=0; i < quizes.length; i++) { %>
-        <tr>
-          <td align=center><a href="/quizes/<%= quizes[i].id %>">Pregunta <%= i+1 %>. <%= quizes[i].pregunta %></a></td>
-          <% if (session.user) {
-                if (session.user.isAdmin || session.user.id === quizes[i].UserId) { %>
-          <td align=center><a href="/quizes/<%= quizes[i].id %>/edit"><button>editar</button></a></td>
-          <td>
-            <form method="post" action="/quizes/<%= quizes[i].id%>?_method=delete">
 
-              <button type="submit" onClick="return confirm('Borrar: <%= quizes[i].pregunta %>');"> borrar </button>
-            </form>
-          </td>
-          <% }
-        } %>
-        </tr>
-     <% } %>
-    </table>
+    <form name="buscador" id="finder" action="/lista" method="get">
+        <p>¿Quieres buscar en particular alguna de entre todas nuestras preguntas? <input type="text" name="busqueda" value="Buscador de pregunta...">
+        <button type="submit">Buscar</button>
+        </p>
+    </form>
+    <center>
     <br>
-    <% if (session.user) { %>
-    <a href="/quizes/new"><button type="button">Crear pregunta</button></a>
-    <% } %>
-  </center>
+    <table>
+        <% var i; for (i=0; i<quizes.length; i++) { %>
+            <tr>
+            <%if(session.user){ 
+                if (session.user.isAdmin || session.user.id === quizes[i].UserId) {%>
+                    <% if(quizes[i].selected) {%>
+                        <td>
+                            <form method="post" action="/user/<%= session.user.id %>/favourites/<%= quizes[i].id %>?_method=delete">
+                                <button class="button1" onClick="return confirm('Quitar de favoritos: <%= quizes[i].pregunta %>');">
+                                    <img src="/media/amarilla.png" style="width:14px; heigth:14px;">
+                                </button>
+                            </form>
+                         </td>
+                    <%} else {%>
+                        <td>
+                            <form method="post" action="/user/<%= session.user.id %>/favourites/<%= quizes[i].id %>?_method=put">
+                                <button class="button1" onClick="return confirm('Añadir a favoritos: <%= quizes[i].pregunta %>');" >
+                                    <img src="/media/gris.png" style="width:14px; heigth:14px;">
+                                </button>
+                            </form>
+                        </td>  
+                    <%} %> 
+                <%} %> 
+            <%} %> 
+                    <td align=center><a href="/quizes/<%= quizes[i].id %>"><%= quizes[i].pregunta %></a></td>
+            <%if(session.user){ 
+                if (session.user.isAdmin || session.user.id === quizes[i].UserId) {%>
+                    <td><a href="/quizes/<%= quizes[i].id %>/edit"><button>editar</button></a>
+                    </td>
+                    <td>
+                        <form method="post" action="/quizes/<%= quizes[i].id %>?_method=delete">
+                            <button type="submit" onClick="return confirm('Borrar: <%= quizes[i].pregunta %>');">
+                                    borrar
+                            </button>
+                        </form>
+                    </td>
+                <%} %>
+            <% } %>                        
+            </tr>
+        <% } %>
+    </table>
+    </center>
+    <br>
+    <%if(session.user){%> 
+        <a href ="/quizes/new"><button type="button">Crear pregunta</button></a>
+    <%}%>
   </body>
 </html>

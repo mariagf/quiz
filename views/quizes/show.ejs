@@ -1,33 +1,53 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8"><title>Quiz</title>
-    <link rel='stylesheet' href='/stylesheets/style.css'/>
-      <link rel='icon' href='favicon.ico' type='image/x-icon'/>
-  </head>
-  <body>
-    <% if(quiz.image){ %>
-      <br>
-      <img class="quiz_img" src="/media/<%= quiz.image %>" style="padding-left: 75px">
-    
-    <% } %>
-    <form method="get" action="/quizes/<%= quiz.id %>/answer">
-      <p>Pregunta: <%= quiz.pregunta%></p>
-        <input type="text" name="respuesta" value="Respuesta"/>
-        <input type="submit" value="Enviar"/>
-    </form>  
-<br>
-    <p> <a href="/quizes/<%= quiz.id %>/comments/new"><button> Nuevo comentario</button></a></p>
-    <br>
-  <p><strong>Comentarios:</strong></p>
-  <% for (index in quiz.Comments){ %>
-    <% if(quiz.Comments[index].publicado) { %>
-      <p> - <%=quiz.Comments[index].texto%></p>
-    <% } else if (session.user && (session.user.isAdmin || (session.user && quiz.UserId ===  session.user.id))) {%>
-        <p> - <%=quiz.Comments[index].texto%></p>
-          <a href="/quizes/<%=quiz.id%>/comments/<%=quiz.Comments[index].id%>/publish"><button>Publicar</button></a>
+	<head>
+		<meta charset="utf-8">
+		<title>Quiz</title>
+		<link rel = 'stylesheet' href= '/stylesheets/style.css' />
+        <link rel="stylesheet" type="text/css" media="only screen and (min-width: 530px) and (min-device-width: 481px)" href= "/stylesheets/wide.css"/>
+    <link rel="stylesheet" type="text/css" media="only screen and (max-width: 480px)" href="/stylesheets/smartphone.css"/>
+	</head>
+	<body>
+        <%if (quiz.image){%>
+            <p class="p1"><img class="quiz_img" src="/media/<%= quiz.image %>"></p>
+        <%}%>
+		<form method="get" action="/quizes/<%= quiz.id %>/answer">
+            Pregunta: <%= quiz.pregunta %> <p>
+            <input type="text" name="respuesta" value="Respuesta"/>
+            <input type="submit" value="Enviar">
+        </form>
+        <% if (session.user) {
+            if (session.user.isAdmin || session.user.id === quizes[i].UserId) { %>
+            <br>   
+                <% if(quiz.selected) {%>
+                    <form method="post" action="/user/<%= session.user.id %>/favourites/<%= quiz.id %>?_method=delete">
+                         <button class="button1" onClick="return confirm('Quitar de favoritos: <%= quiz.pregunta %>');" >
+                            <img src="/media/amarilla.png" style="width:14px; heigth:14px;">
+                         </button>
+                     </form>
+                <%} else {%>
+                    <form method="post" action="/user/<%= session.user.id %>/favourites/<%= quiz.id %>?_method=put">
+                        <button class="button1" onClick="return confirm('Añadir a favoritos: <%= quiz.pregunta %>');">
+                            <img src="/media/gris.png" style="width:14px; heigth:14px;">
+                        </button>
+                    </form>
+                <%} %>
+            <%} %>
+            <br>   
+            <p><a href="/quizes/<%= quiz.id %>/comments/new"><button>Nuevo comentario</button></a></p>
+            <br>   
+            <p><strong>Comentarios:</strong></p>
+            <br> 
+            <center>  
+            <%for(index in quiz.Comments){%>
+                <% if(quiz.Comments[index].publicado){ %>
+                    <p>- <%=quiz.Comments[index].texto%></p>
+	            <% } else if(session.user && (session.user.isAdmin || (session.user && quiz.UserId === session.user.id))){%>
+			        <p>- <%=quiz.Comments[index].texto%>
+			        <a href="/quizes/<%= quiz.id %>/comments/<%=quiz.Comments[index].id%>/publish"><button>Publicar</button></a></p>
+	            <% }%>
+            <% } %>
+            </center>
         <% } %>
-        <p>
-  <% } %>
-  </body>
+	</body>
 </html>

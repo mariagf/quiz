@@ -1,7 +1,4 @@
 var path = require('path');
-
-//Postgress DATABAS_URL = postgress://user:passwd@host:port/database
-//Sqlite DATABASE_URL = sqlite://:@:/
 var url = process.env.DATABASE_URL.match(/(.*)\:\/\/(.*?)\:(.*)@(.*)\:(.*)\/(.*)/);
 var DB_name = (url[6] || null);
 var user  = (url[2] || null);
@@ -41,16 +38,20 @@ var User = sequelize.import(user_path);
 Comment.belongsTo(Quiz);
 Quiz.hasMany(Comment);
 
-// los quizes pertenecen a un usuario registrado
+// Los quizes pertenecen a un usuario registrado
 Quiz.belongsTo(User);
 User.hasMany(Quiz);
 
-// exportar tablas
+// Favouritos
+User.belongsToMany(Quiz, { through: 'Favourites', as: "Favourites" });
+Quiz.belongsToMany(User, { through: 'Favourites', as: "Followers" });
+
+// Exportar tablas
 exports.Quiz = Quiz; //exportar definicion de la tabla Quiz
 exports.Comment = Comment;
 exports.User = User;
 
-//sequelize.sync() crea e inicializa la tabla de preguntas en DB
+// sequelize.sync() crea e inicializa la tabla de preguntas en DB
 sequelize.sync().then(function() {
     //then(..) ejecuta el manejador una vez creada la tabla
     User.count().then(function(count){

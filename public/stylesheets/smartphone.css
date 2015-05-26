@@ -10,3 +10,36 @@ a {
 .quiz_img{
 	float:none;
 }
+button.button1{
+	background:none; 
+	border-radius: 6px;
+}
+
+table.tabla{
+	width: 700px;
+	height: 50px;
+}
+table.tabla2{
+	width: 500px;
+	height: 50px;
+}
+
+nav span {
+	margin: 0px 10px 0px 0px;
+	width: 100%;
+	display: inline-block;
+}
+
+img.fav{
+	width: 14px;
+	height: 14px;
+}
+
+p.p1{
+	padding-left: 5%;
+}
+
+#ErrorMsgs{
+	color: #f61;
+	font-size: smaler;
+}
